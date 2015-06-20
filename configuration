@@ -1,0 +1,3 @@
+items:
+    baudrate: 9600
+    stopbits: 2

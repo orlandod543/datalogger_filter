@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<!-- START html -->
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" class="ie ie8">
+<![endif]-->
+<!--[if !IE]>-->
+<html class="csstransforms no-csstransforms3d csstransitions" xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" lang="en-US"><!--<![endif]--><!-- START head --><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style><link href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/css_002.css" rel="stylesheet" type="text/css"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style{font-family:Roboto,Arial,sans-serif;font-size:11px;font-weight:400;text-decoration:none}.gm-style img{max-width:none}</style>
+
+	<!-- START meta -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta charset="UTF-8">
+	<meta name="keywords" content="SwitchDoc Labs">
+	<meta name="description" content="Really, Really Useful Boards and Blogs">
+	
+	<!-- END meta -->
+
+	<!-- Favicon and apple-touch Icons -->
+
+<link rel="stylesheet" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/style.css" type="text/css" media="screen">
+
+
+
+<!--[if IE]>	
+	<link rel="stylesheet" href="http://www.switchdoc.com/wp-content/themes/AegaeusWP/css/font-awesome-ie7.css" type="text/css" media="all"/>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<style type="text/css">
+.tooltip, a:hover, a h6:hover, #footer a:hover, .from-the-portfolio-title h3, #sort-categories .current-category a, #sort-categories .current-category a:hover, .link-post:hover .service-arrow, .page-pagination a.inactive:hover, .breadcrumb-wrapper a:hover, .page-not-found-box h1, .page-not-found-box h4 span, .hb-tour .tab-select li a:hover, .hb-tour .tab-select li.current_page_item a, #redirect-span, ul.tabs li.active a, .plan-item:hover .plan-item-price, .trigger.active a, .trigger-button.active, .focus-sep-text, .fullwidth-service:hover .icon-image span, .fullwidth-service:hover h4 a, #nav li a:hover, #nav li.current-menu-item a, #nav li.sfHover a, #nav li.current-menu-ancestor>a, #nav ul a:hover, #nav li.sfHover li>a:hover, #nav ul li.sfHover>a, #nav ul li.current-menu-ancestor>a, #nav ul li.current-menu-item>a, #nav-resp li a:hover, .from-the-portfolio-sec-text a:hover, .page-numbers:hover, .blog-pagination div a:hover, .blog-pagination div.alignleft a:hover, .blog-pagination div.alignright a:hover, .page-pagination a:hover, .page-pagination-wrap a:hover { color: #ff6838 }
+
+#nav li a:hover, #nav li.current-menu-item a, #nav li.sfHover a, #nav li.current-menu-ancestor>a, #bottom-line a:hover { border-color: #ff6838 }
+
+blockquote, .callout-box, .testimonial-header .testimonial-content, .tipsy-arrow-e { border-left-color: #ff6838 }
+
+.tipsy-arrow-w { border-right-color: #ff6838 }
+
+.blog-post:hover .blog-post-meta, .link-post:hover .blog-post-excerpt, .bypostauthor>.comment-body:hover, #wrapper, #nav ul, .tipsy-arrow-n { border-bottom-color: #ff6838 }
+.arrow-down, .plan-item:hover, .focus-plan, .fullwidth-service:hover, .tipsy-arrow-s { border-top-color: #ff6838 }
+
+.page-pagination a.current, #header-dropdown, .newsletter-box-inner input[type=submit]:hover, .tipsy-inner, .plan-item-button a:hover, .page-pagination a.current { background-color: #ff6838 }
+
+::-moz-selection, ::-webkit-selection, ::selection { background-color: #ff6838 }
+
+.button:hover, .blog-type-icon-format:hover, .newsletter-box input[type=submit]:hover, .progress-bar .progress span { background: #ff6838 }
+
+.focus-heading, .focus-color, .focus-plan .plan-item-header { color: #ff6838 !important }
+#header-dropdown { background-color: #ff6838 !important }
+</style>
+<!-- Custom CSS -->
+<!-- Custom CSS END -->
+
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v2.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Raspberry Pi Python Library for the MCP79400 - SwitchDoc Labs</title>
+<link rel="canonical" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raspberry Pi Python Library for the MCP79400 - SwitchDoc Labs">
+<meta property="og:description" content="Raspberry Pi Python Library for MCP79400&nbsp;Real Time Clock Here is the second&nbsp;of a series of Python libraries for the Raspberry Pi for various Real Time Clocks (RTC). &nbsp;This is the pure Python driver for the MCP79400 Real Time Clock. The …">
+<meta property="og:url" content="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/">
+<meta property="og:site_name" content="SwitchDoc Labs">
+<meta property="article:section" content="Project Curacao">
+<meta property="article:published_time" content="2014-07-28T10:15:02+00:00">
+<meta property="article:modified_time" content="2014-08-03T12:46:00+00:00">
+<meta property="og:updated_time" content="2014-08-03T12:46:00+00:00">
+<meta property="fb:admins" content="100004833435316">
+<meta property="og:image" content="http://www.switchdoc.com/wp-content/uploads/2014/07/IMG_0235.jpg">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="SwitchDoc Labs » Feed" href="http://www.switchdoc.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="SwitchDoc Labs » Comments Feed" href="http://www.switchdoc.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="SwitchDoc Labs » Raspberry Pi Python Library for the MCP79400 Comments Feed" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/feed/">
+		<script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/pinit_main.js" async="" type="text/javascript"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/analytics.js" async=""></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/analytics.js" async=""></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.switchdoc.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.2"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/wp-emoji-release.js"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+    <style type="text/css">
+		
+		
+				.sc-chat-toolbar,
+		.sc-cnv-wrap,
+		.sc-msg-wrap,
+		.sc-chat-wrapper,
+		#sc_chat_box textarea.f-chat-line,
+		#sc_chat_box p.sc-lead,
+		#sc_chat_box .sc-chat-wrapper input, 
+		#sc_chat_box .sc-chat-wrapper textarea {
+			color: #222222;
+			background-color: #ffffff;
+		}
+
+		.sc-chat-toolbar a { color: #b9b9b9; }
+		.sc-chat-toolbar a:hover { color: #878787; }
+		
+		#sc_chat_box .sc-chat-wrapper input, 
+		#sc_chat_box .sc-chat-wrapper textarea,
+		#sc_chat_box textarea.f-chat-line {
+			border-color: #cdcdcd;
+		}
+		#sc_chat_box .sc-chat-wrapper input:focus,
+		#sc_chat_box .sc-chat-wrapper textarea:focus {
+			background-color: #f5f5f5;
+			border-color: #b9b9b9;
+		}
+		
+		#sc_chat_box textarea.f-chat-line:focus {
+			background-color: #fafafa;
+			border-color: #b9b9b9;
+		}
+		
+		#sc_chat_box .sc-chat-wrapper label {
+			color: #878787;
+		}
+		
+		#sc_chat_box form.sc-chat-reply {
+			border-top: 1px solid #cdcdcd;
+			background-color: #f5f5f5;
+		}
+		
+		#sc_chat_box {
+			width: 300px;
+			right: 40px;
+		}
+		
+		#sc_chat_box textarea.f-chat-line {
+			width: 258px;
+		}
+		
+				
+			#sc_chat_box div.sc-chat-header {
+				-webkit-border-radius: 4px 4px 0 0;
+				   -moz-border-radius: 4px 4px 0 0;
+					   border-radius: 4px 4px 0 0;
+			}
+			
+			.sc-chat-notification.warning,
+			#sc_chat_box .sc-chat-wrapper .sc-start-chat-btn a,
+			#sc_chat_box .sc-chat-wrapper input, #sc_chat_box .sc-chat-wrapper textarea {
+				-webkit-border-radius: 4px;
+				   -moz-border-radius: 4px;
+					   border-radius: 4px;
+			}
+		
+				
+		#sc_chat_box .sc-chat-wrapper input, #sc_chat_box .sc-chat-wrapper textarea {
+			width: 230px;
+		}
+		
+		.sc-chat-wrapper {
+			border-color: #ebebeb;
+			max-height: 380px;
+		}
+		
+		.sc-cnv-wrap {
+			border-color: #ebebeb;
+			max-height: 350px;
+		}
+		
+		#sc_chat_box .sc-chat-wrapper .sc-start-chat-btn > a {
+			color: #ffffff;
+			background-color: #3a99d1;
+		}
+		
+		#sc_chat_box .sc-chat-wrapper .sc-start-chat-btn > a:hover {
+			color: #ffffff;
+			background-color: #bf3723;
+		}
+		
+		#sc_chat_box div.sc-chat-header {
+			color: #ffffff;
+			background-color: #bf3723;
+		}
+                   
+            .sc-chat-css-anim {
+                -webkit-transition: bottom .2s;
+                   -moz-transition: bottom .2s;
+                     -o-transition: bottom .2s;
+                        transition: bottom .2s;
+            }
+            
+       		
+    </style>
+    <link rel="stylesheet" id="layerslider-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/layerslider.css" type="text/css" media="all">
+<link rel="stylesheet" id="ls-google-fonts-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact-form-7-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="rs-plugin-settings-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/settings.css" type="text/css" media="all">
+<style id="rs-plugin-settings-inline-css" type="text/css">
+.tp-caption a{color:#ff7302;text-shadow:none;-webkit-transition:all 0.2s ease-out;-moz-transition:all 0.2s ease-out;-o-transition:all 0.2s ease-out;-ms-transition:all 0.2s ease-out}.tp-caption a:hover{color:#ffa902}
+</style>
+<link rel="stylesheet" id="sfmsb-style-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/style_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="sfmsb-icons-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/icons.css" type="text/css" media="all">
+<link rel="stylesheet" id="hb_fontawesome_style-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/font-awesome.css" type="text/css" media="all">
+<link rel="stylesheet" id="hb_fancybox_style-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/fancybox.css" type="text/css" media="all">
+<link rel="stylesheet" id="hb_flexslider_style-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/flexslider.css" type="text/css" media="all">
+<link rel="stylesheet" id="hb_animate_style-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/animate.css" type="text/css" media="all">
+<link rel="stylesheet" id="hb_responsive_style-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/queries.css" type="text/css" media="all">
+<link rel="stylesheet" id="sc_chat_skin-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/style_003.css" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/genericons.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jetpack.css" type="text/css" media="all">
+<!-- This site uses the Google Analytics by Yoast plugin v5.3.3 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-49587916-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('send','pageview');
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_008.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/related-posts.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/greensock.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/layerslider_002.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/layerslider.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_002.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/front-widget.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_004.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_007.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var MyAjax = {"ajaxurl":"http:\/\/www.switchdoc.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/ajax.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_005.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/postmessage.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_003.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_006.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.switchdoc.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.switchdoc.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.2.2">
+<link rel="shortlink" href="http://www.switchdoc.com/?p=577">
+		<script type="text/javascript">
+			jQuery(document).ready(function() {
+				// CUSTOM AJAX CONTENT LOADING FUNCTION
+				var ajaxRevslider = function(obj) {
+				
+					// obj.type : Post Type
+					// obj.id : ID of Content to Load
+					// obj.aspectratio : The Aspect Ratio of the Container / Media
+					// obj.selector : The Container Selector where the Content of Ajax will be injected. It is done via the Essential Grid on Return of Content
+					
+					var content = "";
+
+					data = {};
+					
+					data.action = 'revslider_ajax_call_front';
+					data.client_action = 'get_slider_html';
+					data.token = '8b7bef841e';
+					data.type = obj.type;
+					data.id = obj.id;
+					data.aspectratio = obj.aspectratio;
+					
+					// SYNC AJAX REQUEST
+					jQuery.ajax({
+						type:"post",
+						url:"http://www.switchdoc.com/wp-admin/admin-ajax.php",
+						dataType: 'json',
+						data:data,
+						async:false,
+						success: function(ret, textStatus, XMLHttpRequest) {
+							if(ret.success == true)
+								content = ret.data;								
+						},
+						error: function(e) {
+							console.log(e);
+						}
+					});
+					
+					 // FIRST RETURN THE CONTENT WHEN IT IS LOADED !!
+					 return content;						 
+				};
+				
+				// CUSTOM AJAX FUNCTION TO REMOVE THE SLIDER
+				var ajaxRemoveRevslider = function(obj) {
+					return jQuery(obj.selector+" .rev_slider").revkill();
+				};
+
+				// EXTEND THE AJAX CONTENT LOADING TYPES WITH TYPE AND FUNCTION
+				var extendessential = setInterval(function() {
+					if (jQuery.fn.tpessential != undefined) {
+						clearInterval(extendessential);
+						if(typeof(jQuery.fn.tpessential.defaults) !== 'undefined') {
+							jQuery.fn.tpessential.defaults.ajaxTypes.push({type:"revslider",func:ajaxRevslider,killfunc:ajaxRemoveRevslider,openAnimationSpeed:0.3});   
+							// type:  Name of the Post to load via Ajax into the Essential Grid Ajax Container
+							// func: the Function Name which is Called once the Item with the Post Type has been clicked
+							// killfunc: function to kill in case the Ajax Window going to be removed (before Remove function !
+							// openAnimationSpeed: how quick the Ajax Content window should be animated (default is 0.3)
+						}
+					}
+				},30);
+			});
+		</script>
+		
+<link rel="dns-prefetch" href="http://i0.wp.com/">
+<link rel="dns-prefetch" href="http://i1.wp.com/">
+<link rel="dns-prefetch" href="http://i2.wp.com/">
+<link rel="dns-prefetch" href="http://widgets.wp.com/">
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://0.gravatar.com/">
+<link rel="dns-prefetch" href="http://1.gravatar.com/">
+<link rel="dns-prefetch" href="http://2.gravatar.com/">
+<link rel="icon" href="http://i1.wp.com/www.switchdoc.com/wp-content/uploads/2015/02/047a58ee2f12fa46f5b1739e4e8dcf31_large-54e656d8v1_site_icon.png?fit=32%2C32" sizes="32x32">
+<link rel="apple-touch-icon-precomposed" href="http://i1.wp.com/www.switchdoc.com/wp-content/uploads/2015/02/047a58ee2f12fa46f5b1739e4e8dcf31_large-54e656d8v1_site_icon.png?fit=114%2C114">
+<meta name="msapplication-TileImage" content="http://i1.wp.com/www.switchdoc.com/wp-content/uploads/2015/02/047a58ee2f12fa46f5b1739e4e8dcf31_large-54e656d8v1_site_icon.png?fit=114%2C114">
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+
+<style type="text/css">a.PIN_1433180072546_pin_it_button_20 { cursor: pointer!important; background-repeat: none!important; background-size: 40px 60px!important; height: 20px!important; padding: 0!important; vertical-align: baseline!important; text-decoration: none!important; width: 40px!important; background-position: 0 -20px }
+a.PIN_1433180072546_pin_it_button_20:hover { background-position: 0 0px }
+a.PIN_1433180072546_pin_it_button_20:active, a.PIN_1433180072546_pin_it_button_20.PIN_1433180072546_hazClick { background-position: 0 -40px }
+a.PIN_1433180072546_pin_it_button_inline_20 { cursor: pointer!important; position: relative!important; display: inline-block!important; }
+a.PIN_1433180072546_pin_it_button_floating_20 { cursor: pointer!important; position: absolute!important; }
+a.PIN_1433180072546_pin_it_button_en_20_red { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_rect_red_20_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_en_20_white { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_rect_white_20_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_en_20_gray { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_rect_gray_20_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_ja_20_red { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_ja_rect_red_20_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_ja_20_white { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_ja_rect_white_20_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_ja_20_gray { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_ja_rect_gray_20_1.png)!important; }
+a.PIN_1433180072546_pin_it_above_20 span.PIN_1433180072546_pin_it_button_count { background: transparent url(https://s-passets.pinimg.com/images/pidgets/count_north_white_rect_20_1.png) 0 0 no-repeat!important; background-size: 40px 29px!important; position: absolute!important; bottom: 21px!important; left: 0px!important; height: 29px!important; width: 40px!important; font: 12px Arial, Helvetica, sans-serif!important; line-height: 24px!important; text-indent: 0!important;}
+a.PIN_1433180072546_pin_it_button_20 span.PIN_1433180072546_pin_it_button_count { position: absolute!important; color: #777!important; text-align: center!important; text-indent: 0!important; }
+a.PIN_1433180072546_pin_it_beside_20 span.PIN_1433180072546_pin_it_button_count, a.PIN_1433180072546_pin_it_beside_20 span.PIN_1433180072546_pin_it_button_count i { background-color: transparent!important; background-repeat: no-repeat!important; background-image: url(https://s-passets.pinimg.com/images/pidgets/count_east_white_rect_20_1.png)!important; }
+a.PIN_1433180072546_pin_it_beside_20 span.PIN_1433180072546_pin_it_button_count { padding: 0 3px 0 10px!important; background-size: 45px 20px!important; background-position: 0 0!important; position: absolute!important; top: 0!important; left: 41px!important; height: 20px!important; font: 10px Arial, Helvetica, sans-serif!important; line-height: 20px!important; }
+a.PIN_1433180072546_pin_it_beside_20 span.PIN_1433180072546_pin_it_button_count i { background-position: 100% 0!important; position: absolute!important; top: 0!important; right: -2px!important; height: 20px!important; width: 2px!important; }
+a.PIN_1433180072546_pin_it_button_20.PIN_1433180072546_pin_it_above { margin-top: 20px!important; }
+a.PIN_1433180072546_pin_it_above_20_pad { margin-top: 30px!important; }
+a.PIN_1433180072546_pin_it_beside_20_pad { margin-right: 45px!important; }
+a.PIN_1433180072546_pin_it_button_28 { cursor: pointer!important; background-repeat: none!important; background-size: 56px 84px!important; height: 28px!important; padding: 0!important; vertical-align: baseline!important; text-decoration: none!important; width: 56px!important; background-position: 0 -28px }
+a.PIN_1433180072546_pin_it_button_28:hover { background-position: 0 0px }
+a.PIN_1433180072546_pin_it_button_28:active, a.PIN_1433180072546_pin_it_button_28.PIN_1433180072546_hazClick { background-position: 0 -56px }
+a.PIN_1433180072546_pin_it_button_inline_28 { cursor: pointer!important; position: relative!important; display: inline-block!important; }
+a.PIN_1433180072546_pin_it_button_floating_28 { cursor: pointer!important; position: absolute!important; }
+a.PIN_1433180072546_pin_it_above_28_pad { margin-top: 38px!important;}
+a.PIN_1433180072546_pin_it_beside_28_pad { margin-right: 50px!important;}
+a.PIN_1433180072546_pin_it_button_en_28_red { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_rect_red_28_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_en_28_white { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_rect_white_28_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_en_28_gray { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_rect_gray_28_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_ja_28_red { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_ja_rect_red_28_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_ja_28_white { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_ja_rect_white_28_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_ja_28_gray { background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_ja_rect_gray_28_1.png)!important; }
+a.PIN_1433180072546_pin_it_button_en_16_red_round, a.PIN_1433180072546_pin_it_button_en_32_red_round { background-repeat: none!important; margin: 0!important; padding: 0!important; vertical-align: baseline!important; text-decoration: none!important; }
+a.PIN_1433180072546_pin_it_button_en_16_red_round { height: 16px!important; width: 16px!important; background-size: 16px 16px!important; background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_round_red_16_1.png)!important;}
+a.PIN_1433180072546_pin_it_button_en_32_red_round { height: 32px!important; width: 32px!important; background-size: 32px 32px!important; background-image: url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_round_red_32_1.png)!important;}
+a.PIN_1433180072546_pin_it_button_inline_en_16_red_round, a.PIN_1433180072546_pin_it_button_inline_en_32_red_round { position: relative!important; display: inline-block!important; }
+a.PIN_1433180072546_pin_it_button_floating_en_16_red_round, a.PIN_1433180072546_pin_it_button_floating_en_32_red_round  { position: absolute!important; }
+a.PIN_1433180072546_pin_it_button_28 span.PIN_1433180072546_pin_it_button_count { position: absolute!important; color: #777!important; text-align: center!important; text-indent: 0!important; }
+a.PIN_1433180072546_pin_it_above_28 span.PIN_1433180072546_pin_it_button_count { background: transparent url(https://s-passets.pinimg.com/images/pidgets/count_north_white_rect_28_1.png) 0 0 no-repeat!important; background-size: 56px 37px!important; position: absolute!important; bottom: 29px!important; left: 0px!important; height: 37px!important; width: 56px!important; font: 15px Arial, Helvetica, sans-serif!important; line-height: 28px!important; text-indent: 0!important;}
+a.PIN_1433180072546_pin_it_beside_28 span.PIN_1433180072546_pin_it_button_count, a.PIN_1433180072546_pin_it_beside_28 span.PIN_1433180072546_pin_it_button_count i { background-color: transparent!important; background-repeat: no-repeat!important; background-image: url(https://s-passets.pinimg.com/images/pidgets/count_east_white_rect_28_1.png)!important; }
+a.PIN_1433180072546_pin_it_beside_28 span.PIN_1433180072546_pin_it_button_count { padding: 0 3px 0 10px!important; background-size: 63px 28px!important; background-position: 0 0!important; position: absolute!important; top: 0!important; left: 57px!important; height: 28px!important; font: 12px Arial, Helvetica, sans-serif!important; line-height: 28px!important; }
+a.PIN_1433180072546_pin_it_beside_28 span.PIN_1433180072546_pin_it_button_count i { background-position: 100% 0!important; position: absolute!important; top: 0!important; right: -2px!important; height: 28px!important; width: 2px!important; }
+a.PIN_1433180072546_pin_it_button_28.PIN_1433180072546_pin_it_above { margin-top: 28px!important; }
+a.PIN_1433180072546_follow_me_button, a.PIN_1433180072546_follow_me_button i { background-size: 200px 60px!important; background: transparent url(https://s-passets.pinimg.com/images/pidgets/bfs1.png) 0 0 no-repeat }
+a.PIN_1433180072546_follow_me_button { cursor: pointer!important; color: #444!important; display: inline-block!important; font: bold normal normal 11px/20px "Helvetica Neue",helvetica,arial,san-serif!important; height: 20px!important; margin: 0!important; padding: 0!important; position: relative!important; text-decoration: none!important; text-indent: 19px!important; vertical-align: baseline!important;}
+a.PIN_1433180072546_follow_me_button:hover { background-position: 0 -20px}
+a.PIN_1433180072546_follow_me_button:active  { background-position: 0 -40px}
+a.PIN_1433180072546_follow_me_button b { position: absolute!important; top: 3px!important; left: 3px!important; height: 14px!important; width: 14px!important; background-size: 14px 14px!important; background-image: url(https://s-passets.pinimg.com/images/pidgets/log1.png)!important; }
+a.PIN_1433180072546_follow_me_button i { position: absolute!important; top: 0!important; right: -4px!important; height: 20px!important; width: 4px!important; background-position: 100% 0px!important; }
+a.PIN_1433180072546_follow_me_button:hover i { background-position: 100% -20px!important;  }
+a.PIN_1433180072546_follow_me_button:active i { background-position: 100% -40px!important; }
+a.PIN_1433180072546_follow_me_button_28, a.PIN_1433180072546_follow_me_button_28 i { background-size: 400px 84px!important; background: transparent url(https://s-passets.pinimg.com/images/pidgets/bft1.png) 0 0 no-repeat }
+a.PIN_1433180072546_follow_me_button_28 { cursor: pointer!important; color: #444!important; display: inline-block!important; font: bold normal normal 13px/28px "Helvetica Neue",helvetica,arial,san-serif!important; height: 28px!important; margin: 0!important; padding: 0!important; position: relative!important; text-decoration: none!important; text-indent: 33px!important; vertical-align: baseline!important;}
+a.PIN_1433180072546_follow_me_button_28:hover { background-position: 0 -28px}
+a.PIN_1433180072546_follow_me_button_28:active  { background-position: 0 -56px}
+a.PIN_1433180072546_follow_me_button_28 b { position: absolute!important; top: 5px!important; left: 10px!important; height: 18px!important; width: 18px!important; background-size: 18px 18px!important; background-image: url(https://s-passets.pinimg.com/images/pidgets/smt1.png)!important; }
+a.PIN_1433180072546_follow_me_button_28 i { position: absolute!important; top: 0!important; right: -10px!important; height: 28px!important; width: 10px!important; background-position: 100% 0px!important; }
+a.PIN_1433180072546_follow_me_button_28:hover i { background-position: 100% -28px!important;  }
+a.PIN_1433180072546_follow_me_button_28:active i { background-position: 100% -56px!important; }
+span.PIN_1433180072546_embed_pin { -webkit-font-smoothing: antialiased!important; cursor: pointer!important; display: inline-block!important; text-align: center!important; overflow: hidden!important; vertical-align: top!important; width: 237px }
+span.PIN_1433180072546_embed_pin.PIN_1433180072546_medium { width: 345px!important; }
+span.PIN_1433180072546_embed_pin.PIN_1433180072546_large { width: 600px!important; }
+span.PIN_1433180072546_embed_pin img { border: 0!important; padding: 0!important; box-shadow: none!important; }
+span.PIN_1433180072546_embed_pin.PIN_1433180072546_fancy { background: #fff!important; box-shadow: 0 1px 3px rgba(0, 0, 0, .33)!important; border-radius: 3px!important; }
+span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_link { display: block!important;  margin: 0 auto!important; padding: 0!important; position: relative!important;  line-height: 0}
+span.PIN_1433180072546_embed_pin img.PIN_1433180072546_embed_pin_link_img { border: 0!important; margin: 0!important; padding: 0!important; border-bottom: 1px solid rgba(0, 0, 0, .09)!important;}
+span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_link i.PIN_1433180072546_repin { left: 12px!important; top: 12px!important; position: absolute!important; height: 20px!important; width: 40px!important; background-size: 40px 60px!important;  background: transparent url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_rect_red_20_1.png) }
+span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_link i.PIN_1433180072546_repin_ja { left: 12px!important; top: 12px!important; position: absolute!important; height: 20px!important; width: 40px!important; background-size: 40px 60px!important; background: transparent url(https://s-passets.pinimg.com/images/pidgets/pinit_bg_ja_rect_red_20_1.png) }
+span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_link i.PIN_1433180072546_repin:hover, span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_link i.PIN_1433180072546_repin_ja:hover { background-position: 0 -20px!important; }
+span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_link i.PIN_1433180072546_repin.PIN_1433180072546_hazClick, span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_link i.PIN_1433180072546_repin_ja.PIN_1433180072546_hazClick { background-position: 0 -40px!important; }
+span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_link i.PIN_1433180072546_play { display: block!important; width: 50px!important; white-space: pre!important; font-family: "Helvetica Neue",helvetica,arial,san-serif!important; font-weight: bold!important; font-style: normal!important; font-size: 9px!important; line-height: 12px!important; margin: 0!important; position: absolute!important; bottom: 12px!important; left: 12px!important; text-decoration: none!important; background: rgba(0, 0, 0, .4)!important; color: rgba(255, 255, 255, 1)!important; border-radius: 13px!important; padding: 5px 0!important; box-shadow: 0 0 2px rgba(0, 0, 0, .2)!important; border: 2px solid rgba(255, 255, 255, .68)!important;}
+span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_link i.PIN_1433180072546_play:hover { background: rgba(0, 0, 0, .8)!important; color: #fff!important; }
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_desc { color: #363636!important; white-space: normal!important; border-bottom: 1px solid rgba(0, 0, 0, .09)!important;!important; display: block!important; font-family: "Helvetica Neue", arial, sans-serif!important; font-size: 13px!important; line-height: 17px!important; padding: 12px!important; text-align: left!important; }
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_attrib { color: #a8a8a8!important; font-family: "Helvetica Neue", sans-serif!important; font-size: 11px!important; line-height: 18px!important; margin-top: 12px!important; font-weight: bold!important; display: block!important;}
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_attrib img.PIN_1433180072546_embed_pin_attrib_icon { height: 16px!important; width: 16px!important; vertical-align: middle!important; padding: 0!important; margin: 0 5px 0 0!important; float: left!important;}
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_attrib a { color: #a8a8a8!important; text-decoration: none!important;}
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_stats { display: block!important; }
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_stats span.PIN_1433180072546_embed_pin_stats_repin_count, span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_stats span.PIN_1433180072546_embed_pin_stats_like_count { display: inline-block!important; padding-left: 17px!important; padding-right: 10px!important; color: #a8a8a8!important; font-family: "Helvetica Neue", sans-serif!important; font-size: 11px!important; line-height: 12px!important; margin-top: 12px!important; font-weight: bold!important; }
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_stats span.PIN_1433180072546_embed_pin_stats_repin_count { background: url(data:image/png!important;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAAAAABq7uO+AAAASklEQVQI10WNMQrAMBRCvf/Z3pQcImPplsIPdqhNXOSJqLxVtnWQsuUO9IM3cHlV8dSSDZQHAOPH2YA2FU+qtH7MRhaVh/xt/PQCEW6N4EV+CPEAAAAASUVORK5CYII=) 0 0 no-repeat!important; }
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_stats span.PIN_1433180072546_embed_pin_stats_like_count { background: url(data:image/png!important;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAAAAAClR+AmAAAAUElEQVR4AT2HMQpFIQwEc/+zbXhFLBW8QUihIAT2E8Q/xe6M0Jv2zK7NKUcBzAlAjzjqtdZl4c8S2nOjMPS6BoWMr/wLVnAbYJs3mGMkXzx+OeRqUf5HHRoAAAAASUVORK5CYII=) 0 2px no-repeat!important; }
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_text { padding: 12px!important; position: relative!important; text-decoration: none!important; display: block!important; font-weight: bold!important; color: #b7b7b7!important; font-family: "Helvetica Neue", arial, sans-serif!important; font-size: 11px!important; line-height: 14px!important; height: 30px!important; text-align: left!important; }
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_text img.PIN_1433180072546_embed_pin_text_avatar { border-radius: 15px!important; border: none!important; overflow: hidden!important; height: 30px!important; width: 30px!important; vertical-align: middle!important; margin: 0 8px 12px 0!important; float: left!important;}
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_text span.PIN_1433180072546_embed_pin_text_container_pinner, span.PIN_1433180072546_embed_pin a.PIN_1433180072546_embed_pin_text span.PIN_1433180072546_embed_pin_text_container_board { display: block!important; width: 175px!important; white-space: nowrap!important; overflow: hidden!important; text-overflow: ellipsis!important;}
+span.PIN_1433180072546_embed_pin span.PIN_1433180072546_embed_pin_text span.PIN_1433180072546_embed_pin_text_container_pinner { color: #777!important;}
+span.PIN_1433180072546_embed_grid { display: inline-block!important; margin: 0!important; padding:10px 0!important; position: relative!important; text-align: center}
+span.PIN_1433180072546_embed_grid.PIN_1433180072546_fancy { background: #fff!important; box-shadow: 0 1px 3px rgba(0, 0, 0, .33)!important; border-radius: 3px!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_hd { display: block!important; margin: 0 10px!important; padding: 0!important; height: 45px!important; position: relative!important;}
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_hd a.PIN_1433180072546_avatar { position: absolute!important; top: 0!important; left: 0!important; height: 36px!important; width: 36px!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_hd a.PIN_1433180072546_avatar img { position: relative!important; height: 36px!important; width: 36px!important; min-height: 36px!important; min-width: 36px!important; margin: 0!important; padding: 0!important; border-radius: 3px!important; border: none!important;}
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_hd a { text-decoration: none!important; border: none!important; background: transparent!important; cursor: pointer!important; white-space: nowrap!important; position: absolute!important; left: 44px!important; text-align: left!important; overflow: hidden!important; text-overflow: ellipsis!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_hd a:hover { text-decoration: none!important; background: inherit!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_hd a:active { text-decoration: none!important; background: inherit!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_hd a.PIN_1433180072546_embed_grid_first { top: 2px!important; font-family: helvetica, sans-serif!important; font-weight: bold!important; color:#333!important; font-size: 14px!important; line-height: 16px!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_hd a.PIN_1433180072546_embed_grid_second { bottom: 11px!important; font-family: helvetica, sans-serif!important; color:#8e8e8e!important; font-size: 12px!important; line-height: 14px!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_hd a.PIN_1433180072546_embed_grid_mid { top: 12px!important; font-family: helvetica, sans-serif!important; font-weight: bold!important; color:#333!important; font-size: 14px!important; line-height: 16px!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_bd { display:block!important; margin: 0 10px!important; border-radius: 2px!important; position: relative!important; overflow: hidden }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_scrolling_okay { overflow: auto!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_bd span.PIN_1433180072546_embed_grid_ct { display:block!important; position: relative!important; overflow: hidden!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_bd a.PIN_1433180072546_embed_grid_th { cursor: pointer!important; display: inline-block!important; position: absolute!important; overflow: hidden!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_bd a.PIN_1433180072546_embed_grid_th::before { position: absolute!important; content:""!important; z-index: 2!important; top: 0!important; left: 0!important; right: 0!important; bottom: 0!important; box-shadow: inset 0 0 2px #888!important; }
+span.PIN_1433180072546_embed_grid span.PIN_1433180072546_embed_grid_bd a.PIN_1433180072546_embed_grid_th img.PIN_1433180072546_embed_grid_img { border: none!important; margin-left: 0!important; margin-right: 0!important; margin-bottom: 0!important; padding: 0!important;position: absolute!important; top: 50%!important; left: 0!important; }
+a.PIN_1433180072546_embed_grid_ft { cursor: pointer!important; text-shadow: 0 1px #fff!important; display: block!important; text-align: center!important; border: 1px solid #ccc!important; margin: 10px 10px 0!important; height: 31px!important; line-height: 30px!important;border-radius: 2px!important; text-decoration: none!important; font-family: Helvetica!important; font-weight: bold!important; font-size: 13px!important; color: #746d6a!important; background: #f4f4f4 url(https://s-passets.pinimg.com/images/pidgets/board_button_link.png) 0 0 repeat-x}
+a.PIN_1433180072546_embed_grid_ft:hover { text-decoration: none!important; background: #fefefe url(https://s-passets.pinimg.com/images/pidgets/board_button_hover.png) 0 0 repeat-x}
+a.PIN_1433180072546_embed_grid_ft:active { text-decoration: none!important; background: #e4e4e4 url(https://s-passets.pinimg.com/images/pidgets/board_button_active.png) 0 0 repeat-x}
+a.PIN_1433180072546_embed_grid_ft span.PIN_1433180072546_embed_grid_ft_logo { vertical-align: top!important; display: inline-block!important; margin-left: 2px!important; height: 30px!important; width: 66px!important; background: transparent url(https://s-passets.pinimg.com/images/pidgets/board_button_logo.png) 50% 48% no-repeat!important; }
+.PIN_1433180072546_hidden { display:none!important; }</style><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/common.js" charset="UTF-8" type="text/javascript"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/map.js" charset="UTF-8" type="text/javascript"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/util.js" charset="UTF-8" type="text/javascript"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/geocoder.js" charset="UTF-8" type="text/javascript"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/marker.js" charset="UTF-8" type="text/javascript"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/onion.js" charset="UTF-8" type="text/javascript"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/stats.js" charset="UTF-8" type="text/javascript"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/controls.js" charset="UTF-8" type="text/javascript"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/overlay.js" charset="UTF-8" type="text/javascript"></script></head>
+<!-- END head -->
+
+
+<!-- START body -->
+<body data-pin-hover="true" class="single single-post postid-577 single-format-standard kikkey-top">
+
+			<style type="text/css">
+			body 
+				{ 
+					background-image: url("http://www.switchdoc.com/wp-content/themes/AegaeusWP/images/textures/body/dots1.png") !important;
+				}
+		</style>
+	
+	<!-- START #wrapper -->
+
+	<div id="wrapper" class="no-shadow-layout boxed-layout page-no-title ">
+
+	<!-- START #header-dropdown -->
+	<div id="header-dropdown">
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/js"></script><script src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/main.js"></script>
+
+
+			<script type="text/javascript">
+					jQuery(document).ready(function(){
+						jQuery("#map").gMap({
+
+							controls: {
+										panControl: 1,
+										zoomControl: 1,
+										zoomControlOptions: {
+											style: google.maps.ZoomControlStyle.SMALL
+										},
+										mapTypeControl: 1,
+										streetViewControl: 1,
+										overviewMapControl: 1
+									},
+									maptype: 'ROADMAP',
+									zoom: 10,
+									latitude: 50,
+									longitude: 50,
+									
+						});
+					});
+			</script>		<div style="position: relative; background-color: rgb(229, 227, 223); overflow: hidden;" id="map"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; position: absolute; left: 897px; top: 117px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 641px; top: 117px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 897px; top: -139px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 897px; top: 373px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 1153px; top: 117px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 641px; top: -139px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 641px; top: 373px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 1153px; top: -139px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 1153px; top: 373px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 385px; top: 117px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 1409px; top: 117px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 385px; top: -139px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 385px; top: 373px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 1409px; top: -139px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 1409px; top: 373px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 129px; top: 117px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 129px; top: -139px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 129px; top: 373px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -127px; top: 117px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -127px; top: -139px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -127px; top: 373px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 897px; top: 117px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 641px; top: 117px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 897px; top: -139px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 897px; top: 373px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1153px; top: 117px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 641px; top: -139px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 641px; top: 373px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1153px; top: -139px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1153px; top: 373px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 385px; top: 117px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1409px; top: 117px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 385px; top: -139px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 385px; top: 373px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1409px; top: -139px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1409px; top: 373px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 129px; top: 117px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 129px; top: -139px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 129px; top: 373px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -127px; top: 117px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -127px; top: -139px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -127px; top: 373px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="position: absolute; left: 897px; top: 117px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_016.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 641px; top: 117px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_018.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 897px; top: -139px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 897px; top: 373px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_008.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 1153px; top: 117px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_015.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 641px; top: -139px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_011.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 641px; top: 373px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_004.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 1153px; top: -139px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_002.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 1153px; top: 373px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_019.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 385px; top: 117px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_020.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 1409px; top: 117px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_021.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 385px; top: -139px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_005.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 385px; top: 373px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_010.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 1409px; top: -139px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_007.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 1409px; top: 373px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_009.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 129px; top: 117px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_017.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 129px; top: -139px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_012.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: 129px; top: 373px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_013.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: -127px; top: 117px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_006.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: -127px; top: -139px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_003.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div><div style="position: absolute; left: -127px; top: 373px; width: 256px; height: 256px; opacity: 1; transition: opacity 200ms ease-out 0s;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/vt_014.png" style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 256px; height: 256px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a title="Haz clic aquí para visualizar esta zona en Google Maps" href="https://maps.google.com/maps?ll=50,49.781647&amp;z=10&amp;t=m&amp;hl=es-ES&amp;gl=US&amp;mapclient=apiv3" target="_blank" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 62px; height: 26px; cursor: pointer;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/google_white2.png" style="position: absolute; left: 0px; top: 0px; width: 62px; height: 26px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></a></div><div style="z-index: 1000001; position: absolute; right: 247px; bottom: 0px; width: 154px;" class="gmnoprint"><div class="gm-style-cc" style="-moz-user-select: none;" draggable="false"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Datos de mapas</a><span style="">Datos de mapas ©2015 Google</span></div></div></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto,Arial,sans-serif; color: rgb(34, 34, 34); box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 645px; top: 100px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Datos de mapas</div><div style="font-size: 13px;">Datos de mapas ©2015 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/mapcnt6.png" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div><div style="position: absolute; right: 0px; bottom: 0px;" class="gmnoscreen"><div style="font-family: Roboto,Arial,sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Datos de mapas ©2015 Google</div></div><div draggable="false" style="z-index: 1000001; position: absolute; -moz-user-select: none; right: 161px; bottom: 0px;" class="gmnoprint gm-style-cc"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a target="_blank" href="https://www.google.com/intl/es-ES_US/help/terms_maps.html" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Términos de uso</a></div></div><div class="gm-style-cc" style="-moz-user-select: none; position: absolute; right: 18px; bottom: 0px;" draggable="false"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a href="https://www.google.com/maps/@50,49.7816467,10z/data=%2110m1%211e1%2112b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto,Arial,sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;" title="Informar a Google acerca de errores en las imágenes o en el mapa de carreteras" target="_new">Informar de un error de Maps</a></div></div><div draggable="false" style="position: absolute; -moz-user-select: none; margin-left: 5px; margin-top: 5px; width: 13px; height: 13px; right: 0px; bottom: 0px;" class="gmnoprint"><div style="background-color: rgb(255, 255, 255); overflow: hidden; width: 120px; height: 120px; display: none;"><div style="position: absolute; left: 3px; top: 3px; width: 117px; height: 117px; background-color: rgb(229, 227, 223); overflow: hidden;"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; position: absolute; left: -109px; top: -218px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -109px; top: 38px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"></div><div style="position: absolute; z-index: 0; left: 0px; top: 0px;"><div style="overflow: hidden;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"><div style="border: 1px solid rgb(255, 255, 255); outline: 1px solid rgb(0, 0, 0); opacity: 0.35; position: absolute; margin-top: -6px; margin-left: -25px; width: 50px; height: 12px; left: 0px; top: 0px;"><div style="position: absolute; background: none repeat scroll 0% 0% rgb(0, 0, 0); opacity: 0.7; width: 50px; height: 12px;"></div></div><div style="border: 1px solid rgb(255, 255, 255); outline: 1px solid rgb(0, 0, 0); opacity: 0.35; position: absolute; cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; margin-top: -6px; margin-left: -25px; width: 50px; height: 12px; left: 0px; top: 0px;"><div style="position: absolute; width: 50px; height: 12px;"></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div></div></div></div><div style="width: 13px; height: 13px; position: absolute; cursor: pointer; left: 0px; top: 0px;"><div title="Abre la vista general del mapa." style="width: 13px; height: 13px; overflow: hidden; position: absolute;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/mapcnt6.png" style="position: absolute; left: -2px; top: -364px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div></div><div controlheight="169" controlwidth="78" draggable="false" style="margin: 5px; -moz-user-select: none; position: absolute; left: 0px; top: 0px;" class="gmnoprint"><div style="cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; width: 78px; height: 78px; position: absolute; left: 0px; top: 0px;" controlheight="80" controlwidth="78" class="gmnoprint"><div style="width: 78px; height: 78px; position: absolute; left: 0px; top: 0px;" controlheight="80" controlwidth="78" class="gmnoprint"><div style="visibility: hidden;"><svg viewBox="0 0 78 78" height="78px" width="78px" overflow="hidden" version="1.1" style="position: absolute; left: 0px; top: 0px;"><circle stroke="#f2f4f6" fill="#f2f4f6" fill-opacity="0.2" stroke-width="3" r="35" cy="39" cx="39"></circle><g transform="rotate(0 39 39)"><rect fill="#f2f4f6" stroke-width="1" stroke="#a6a6a6" height="11" width="12" ry="4" rx="4" y="0" x="33"></rect><polyline stroke="#000" fill="#f2f4f6" stroke-width="1.5" stroke-linejoin="bevel" points="36.5,8.5 36.5,2.5 41.5,8.5 41.5,2.5"></polyline></g></svg></div></div><div style="position: absolute; left: 10px; top: 11px;" controlheight="59" controlwidth="59" class="gmnoprint"><div style="width: 59px; height: 59px; overflow: hidden; position: relative;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/mapcnt6.png" style="position: absolute; left: 0px; top: 0px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"><div title="Obtiene una vista panorámica hacia la izquierda" style="position: absolute; left: 0px; top: 20px; width: 19.6667px; height: 19.6667px; cursor: pointer;"></div><div title="Obtiene una vista panorámica hacia la derecha" style="position: absolute; left: 39px; top: 20px; width: 19.6667px; height: 19.6667px; cursor: pointer;"></div><div title="Obtiene una vista panorámica hacia arriba" style="position: absolute; left: 20px; top: 0px; width: 19.6667px; height: 19.6667px; cursor: pointer;"></div><div title="Obtiene una vista panorámica hacia abajo" style="position: absolute; left: 20px; top: 39px; width: 19.6667px; height: 19.6667px; cursor: pointer;"></div></div></div></div><div style="cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; position: absolute; left: 23px; top: 85px;" controlheight="40" controlwidth="32"><div aria-label="Control del hombrecito naranja de Street View" style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/cb_scout2.png" style="position: absolute; left: -9px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div aria-label="Se ha inhabilitado el hombrecito naranja." style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/cb_scout2.png" style="position: absolute; left: -107px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div aria-label="El hombrecito naranja está en la parte superior del mapa." style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/cb_scout2.png" style="position: absolute; left: -58px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div aria-label="Control del hombrecito naranja de Street View" style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/cb_scout2.png" style="position: absolute; left: -205px; top: -102px; width: 1028px; height: 214px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div></div><div style="position: absolute; left: 29px; top: 130px;" controlheight="39" controlwidth="20" class="gmnoprint"><div style="width: 20px; height: 39px; overflow: hidden; position: absolute;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/mapcnt6.png" style="position: absolute; left: -39px; top: -401px; width: 59px; height: 492px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px;"></div><div title="Acerca la imagen" style="position: absolute; left: 0px; top: 2px; width: 20px; height: 17px; cursor: pointer;"></div><div title="Aleja la imagen" style="position: absolute; left: 0px; top: 19px; width: 20px; height: 17px; cursor: pointer;"></div></div></div><div style="margin: 5px; z-index: 0; position: absolute; cursor: pointer; right: 0px; top: 0px;" class="gmnoprint"><div class="gm-style-mtc" style="float: left;"><div title="Muestra el callejero" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 1px 6px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; background-clip: padding-box; border: 1px solid rgba(0, 0, 0, 0.15); box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); min-width: 28px; font-weight: 500;">Mapa</div><div style="background-color: white; z-index: -1; padding-top: 2px; background-clip: padding-box; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); position: absolute; left: 0px; top: 24px; text-align: left; display: none;"><div title="Muestra el callejero con relieve" draggable="false" style="color: rgb(0, 0, 0); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px 8px 3px 3px; direction: ltr; text-align: left; white-space: nowrap;"><span style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;" role="checkbox"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/imgs8.png" style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Relieve</label></div></div></div><div class="gm-style-mtc" style="float: left;"><div title="Muestra las imágenes de satélite" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 1px 6px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; background-clip: padding-box; border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); min-width: 36px;">Satélite</div><div style="background-color: white; z-index: -1; padding-top: 2px; background-clip: padding-box; border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3); position: absolute; right: 0px; top: 24px; text-align: left; display: none;"><div title="Acerca la imagen para mostrar la vista de 45 grados." draggable="false" style="color: rgb(184, 184, 184); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px 8px 3px 3px; direction: ltr; text-align: left; white-space: nowrap; display: none;"><span style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(241, 241, 241); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;" role="checkbox"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/imgs8.png" style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">45°</label></div><div title="Muestra las imágenes con los nombres de las calles" draggable="false" style="color: rgb(0, 0, 0); font-family: Roboto,Arial,sans-serif; -moz-user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 3px 8px 3px 3px; direction: ltr; text-align: left; white-space: nowrap;"><span style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;" role="checkbox"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img scale="0" draggable="false" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/imgs8.png" style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Etiquetas</label></div></div></div></div></div></div>
+		<div class="arrow-down"></div>
+	</div>
+	<!-- END #header-dropdown -->
+
+	<!-- START #content -->
+	<div id="content">
+		
+	<!-- START #content-inner -->
+	<div id="content-inner" class="container clearfix">
+
+	<!-- START #header -->
+	<div id="header" class="hb_sticky_nav clearfix">
+	<!-- START #logo-wrap-->
+	<div id="logo-wrap">
+	<div id="logo" style="margin-top:-30px;">
+	<a href="http://www.switchdoc.com/">
+<img scale="0" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/cropped-switchdoclogoforblog.png">	</a>
+	</div>
+	<p id="tagline">
+Really, Really Useful Boards and Blogs	</p>
+	</div>
+	<!-- END #logo-wrap -->
+	<!-- START #social-wrap -->
+	<div id="social-wrap">
+	<div id="header-social">
+	<ul class="social clearfix">
+		<li><a class="facebook" href="https://www.facebook.com/pages/SwitchDoc-Labs/1458357251078999?ref=tn_tnmn" target="_blank"></a></li>
+		<li><a class="googleplus" href="https://plus.google.com/u/0/+JohnShovic/posts" target="_blank"></a></li>
+		<li><a class="twitter" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/@switchdoclabs" target="_blank"></a></li>
+	</ul>
+	</div>
+<div class="clear"></div><form action="http://www.switchdoc.com" role="search" method="get" id="search-404"><input placeholder="Search..." name="s" id="search" type="text"><input id="submit-search" value="" type="submit"></form>	</div>
+	<!-- END #social-wrap -->
+<!-- BEGIN RESPONSIVE NAVIGATION -->
+							<div id="nav-wrap" class="navigation-class">                  
+								<div id="menu-icon"><span class="image-icon"></span></div>
+									<ul id="nav-resp">
+										<div class="triangle"></div>
+									<li></li><li class=""><a href="http://www.switchdoc.com/"><span></span>Home</a></li>
+<li class=""><a href="http://www.switchdoc.com/switchdoc-labs-products-2/"><span></span>SwitchDoc Labs Products</a></li>
+<li class=""><a class="" href="http://www.switchdoc.com/category/projectcat/"><span></span>Projects<span class="sf-sub-indicator"> »</span></a>
+<ul class="">
+	<li class=""><a href="http://www.switchdoc.com/category/mouseair-2/"><span></span>MouseAir</a></li>
+	<li class=""><a href="http://www.switchdoc.com/category/beaconair/"><span></span>BeaconAir</a></li>
+	<li class=""><a href="http://www.switchdoc.com/category/weatherpiarduino/"><span></span>WeatherPiArduino</a></li>
+	<li class=""><a class="" href="http://www.switchdoc.com/"><span></span>Project Curacao-Ard/Pi<span class="sf-sub-indicator"> »</span></a>
+	<ul class="">
+		<li class=""><a href="http://www.switchdoc.com/project-curacao-introduction-part-1/"><span></span>Project Curacao Introduction – Part 1</a></li>
+		<li class=""><a href="http://www.switchdoc.com/project-curacao-solar-power-subsystem-part-2/"><span></span>PC Solar Power Subsystem – Part 2</a></li>
+		<li class=""><a href="http://www.switchdoc.com/project-curacao-arduino-battery-watchdog-part-3/"><span></span>Project Curacao – Arduino Battery Watchdog – Part 3</a></li>
+		<li class=""><a href="http://www.switchdoc.com/project-curacao-environmental-subsystem-part-4/"><span></span>Project Curacao – Environmental Subsystem – Part 4</a></li>
+		<li class=""><a href="http://www.switchdoc.com/project-curacao-camera-subsystem-part-5/"><span></span>Project Curacao – Camera Subsystem – Part 5</a></li>
+		<li class=""><a href="http://www.switchdoc.com/project-curacao-software-system-part-6/"><span></span>Project Curacao – Software System – Part 6</a></li>
+		<li class=""><a href="http://www.switchdoc.com/installation-of-project-curacao-part-7/"><span></span>Project Curacao – Installation/First Months – Part 7</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li class=""><a href="http://www.switchdoc.com/switchdoc-labs-really-useful-blogs/"><span></span>Blogs</a></li>
+<li class=""><a href="http://www.switchdoc.com/category/windpowercat/"><span></span>Wind Power</a></li>
+<li class=""><a href="http://www.switchdoc.com/category/solarpowercat/"><span></span>Solar Power</a></li>
+<li class=""><a href="http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&amp;field-keywords=switchdoc+labs" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&amp;field-keywords=switchdoc+labs', 'Store');"><span></span>Store</a></li>
+<li class=""><a href="http://www.switchdoc.com/about/"><span></span>About</a></li>
+</ul>						
+							</div>
+							<!-- END RESPONSIVE NAVIGATION -->	</div>
+	<!-- END #header -->
+	<div style="height: 38px;" class="sticky-wrapper" id="main-navigation-wrapper-sticky-wrapper"><div style="position: fixed; top: 0px;" id="main-navigation-wrapper" class="navigation-class clearfix stuck"><ul id="nav" class="menu clearfix sf-js-enabled"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-84"><a href="http://www.switchdoc.com/"><span></span>Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1910"><a href="http://www.switchdoc.com/switchdoc-labs-products-2/"><span></span>SwitchDoc Labs Products</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-641"><a class="sf-with-ul" href="http://www.switchdoc.com/category/projectcat/"><span></span>Projects<span class="sf-sub-indicator"> »</span></a>
+<ul style="display: none; visibility: hidden;" class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-338"><a href="http://www.switchdoc.com/category/mouseair-2/"><span></span>MouseAir</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-370"><a href="http://www.switchdoc.com/category/beaconair/"><span></span>BeaconAir</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-713"><a href="http://www.switchdoc.com/category/weatherpiarduino/"><span></span>WeatherPiArduino</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-98"><a class="sf-with-ul" href="http://www.switchdoc.com/"><span></span>Project Curacao-Ard/Pi<span class="sf-sub-indicator"> »</span></a>
+	<ul style="display: none; visibility: hidden;" class="sub-menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-100"><a href="http://www.switchdoc.com/project-curacao-introduction-part-1/"><span></span>Project Curacao Introduction – Part 1</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-99"><a href="http://www.switchdoc.com/project-curacao-solar-power-subsystem-part-2/"><span></span>PC Solar Power Subsystem – Part 2</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a href="http://www.switchdoc.com/project-curacao-arduino-battery-watchdog-part-3/"><span></span>Project Curacao – Arduino Battery Watchdog – Part 3</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-120"><a href="http://www.switchdoc.com/project-curacao-environmental-subsystem-part-4/"><span></span>Project Curacao – Environmental Subsystem – Part 4</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-119"><a href="http://www.switchdoc.com/project-curacao-camera-subsystem-part-5/"><span></span>Project Curacao – Camera Subsystem – Part 5</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118"><a href="http://www.switchdoc.com/project-curacao-software-system-part-6/"><span></span>Project Curacao – Software System – Part 6</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117"><a href="http://www.switchdoc.com/installation-of-project-curacao-part-7/"><span></span>Project Curacao – Installation/First Months – Part 7</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1862"><a href="http://www.switchdoc.com/switchdoc-labs-really-useful-blogs/"><span></span>Blogs</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-448"><a href="http://www.switchdoc.com/category/windpowercat/"><span></span>Wind Power</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-449"><a href="http://www.switchdoc.com/category/solarpowercat/"><span></span>Solar Power</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-519"><a href="http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&amp;field-keywords=switchdoc+labs" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&amp;field-keywords=switchdoc+labs', 'Store');"><span></span>Store</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-133"><a href="http://www.switchdoc.com/about/"><span></span>About</a></li>
+</ul></div></div>	<div id="header-separator" class="separator"></div>	
+		
+	<!-- START #main-content -->
+	<div id="main-content" class="clearfix">
+	
+	<!-- START #main-inner-wrapper -->
+	<div id="main-inner-wrapper" class="col-12 clearfix page-with-sidebar">
+
+	
+		<!-- START #sidebar-page-wrapper-->
+	<div id="sidebar-page-wrapper" class="clearfix">
+
+	<!-- START #main-content-with-sidebar" -->
+	<div id="main-content-with-sidebar" class="col-8">
+		
+	
+
+
+	<div id="post-577" class="post-577 post type-post status-publish format-standard has-post-thumbnail hentry category-projectcuracaocat">
+
+		<!-- BEGIN .blog-post-sec -->
+	<div class="blog-post-sec clearfix">
+		<!-- START .blog-head -->
+	<div class="blog-head clearfix">
+		<!-- START .blog-meta-info -->
+		<div class="blog-meta-info">
+			<span class="post-date">28</span>
+			<br>
+			<span class="post-month">Jul</span>
+		</div>
+		<!-- END .blog-meta-info -->
+
+		
+		<!-- START .blog-meta-title -->
+		<div class="blog-meta-title">
+			<h2>				<a href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/">Raspberry Pi Python Library for the MCP79400</a>
+				</h2>
+			<div class="separator"></div>
+					</div>
+		<!-- END .blog-meta-title -->
+		
+	</div>
+	<!-- END .blog-head -->
+	
+					<a href="http://www.switchdoc.com/wp-content/uploads/2014/07/IMG_0235.jpg" class="post-featured-image fancybox"><img scale="0" style="opacity: 1;" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/IMG_0235_002.jpg" alt="Raspberry Pi Python Library for the MCP79400"></a>
+
+			
+	<div class="blog-excerpt">
+	<h1>Raspberry Pi Python Library for MCP79400&nbsp;Real Time Clock</h1>
+<div id="attachment_582" style="width: 235px" class="wp-caption alignright"><a href="http://i1.wp.com/www.switchdoc.com/wp-content/uploads/2014/07/IMG_0235.jpg"><img scale="1.5" src-orig="http://i1.wp.com/www.switchdoc.com/wp-content/uploads/2014/07/IMG_0235.jpg?resize=225%2C300" class="wp-image-582 size-medium" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/IMG_0235.jpg" alt="Real Time Clock Raspberry Pi" height="313" width="235"></a><p class="wp-caption-text">Four RTC Test Jig Running Month Long Test</p></div>
+<p>Here is the second&nbsp;of a series of Python libraries for the 
+Raspberry Pi for various Real Time Clocks (RTC). &nbsp;This is the pure 
+Python driver for the MCP79400 Real Time Clock. The original code is the
+ DS1307 library from @XiErCh. The main changes involve removing the 12 
+hour mode, which didn’t work correctly in all cases and a different 
+clock starting procedure. This library now only runs in 24 hour mode. We
+ will be releasing libraries for the &nbsp;DS3231 and the PCF8563 over 
+the next couple of weeks. To the left is a picture of the four RTC test 
+jig. &nbsp;The MCP79400&nbsp;library is on <a href="https://github.com/switchdoclabs/RTC_SDL_MCP79400" onclick="__gaTracker('send', 'event', 'outbound-article', 'https://github.com/switchdoclabs/RTC_SDL_MCP79400', 'https://github.com/switchdoclabs/RTC_SDL_MCP79400');" target="_blank">https://github.com/switchdoclabs/RTC_SDL_MCP79400</a>.<br>
+The MCP79400&nbsp;(we used the&nbsp;BM005 Clock and Calendar Module from
+ Solutions Cubed, LLC) is a 3.3V and 5V device. You just connect it up 
+to the Raspberry Pi I2C pins and you are ready to go.</p>
+<div id="attachment_580" style="width: 295px" class="wp-caption alignleft"><a href="http://i2.wp.com/www.switchdoc.com/wp-content/uploads/2014/07/MPC79400Small.jpg"><img scale="1.5" src-orig="http://i2.wp.com/www.switchdoc.com/wp-content/uploads/2014/07/MPC79400Small.jpg?resize=285%2C300" class="size-medium wp-image-580" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/MPC79400Small.jpg" alt="MCP79400 Raspberry Pi" height="311" width="295"></a><p class="wp-caption-text">MCP79400 BM005 Test Jig</p></div>
+<p>We will be releasing libraries for the &nbsp;DS3231 and PCF8563 in the next few weeks. &nbsp;The python library for the <a title="Raspberry Pi Python Library for DS1307" href="http://www.switchdoc.com/2014/07/python-driver-ds1307-real-time-clock/" target="_blank">DS1307</a> has already been released (<a href="https://github.com/switchdoclabs/RTC_SDL_DS1307" onclick="__gaTracker('send', 'event', 'outbound-article', 'https://github.com/switchdoclabs/RTC_SDL_DS1307', 'https://github.com/switchdoclabs/RTC_SDL_DS1307');" target="_blank">https://github.com/switchdoclabs/RTC_SDL_DS1307</a><span style="color: #333333;">)</span>.</p>
+<h2>Example Code for the MCP79400</h2>
+<p>There is a testSDL_MCP79400.py included with the library. Here is the bare code needed:</p>
+<pre>import sys
+import time
+import datetime
+
+import SDL_MCP79400
+
+# Main Program
+
+print ""
+print "Test SDL_MCP79400 Version 1.0 - SwitchDoc Labs"
+print ""
+print ""
+print "Program Started at:"+ time.strftime("%Y-%m-%d %H:%M:%S")
+
+filename = time.strftime("%Y-%m-%d%H:%M:%SRTCTest") + ".txt"
+starttime = datetime.datetime.utcnow()
+
+# MCP79400
+# Note: MCP79400 can't quite use the same library as DS1307 for read/write time
+# There are differences in starting the clock
+mcp79400 = SDL_MCP79400.SDL_MCP79400(1, 0x6F)
+mcp79400.write_now()
+
+# Main Loop - sleeps 10 minutes, then reads and prints values of all clocks
+
+
+while True:
+
+ currenttime = datetime.datetime.utcnow()
+
+ deltatime = currenttime - starttime
+
+ print ""
+ print "Raspberry Pi=\t" + time.strftime("%Y-%m-%d %H:%M:%S")
+
+ print "MCP79400=\t\t%s" % mcp79400.read_datetime()
+
+ time.sleep(10.0)</pre>
+<p>You should see a result like this:</p>
+<pre>Raspberry Pi= 2014-07-27 19:36:32
+ MCP79400= 2014-07-27 19:36:32</pre>
+<h2>Initial Test Results for the MCP79400</h2>
+<p>I am in the process of running an month long test of three RTCs 
+(DS3231, MCP79400 and the PCF8563) and so far, the MCP79400 is 
+running&nbsp;with an error &lt; 20ppm (parts per million). &nbsp;20ppm 
+is about 1.7 seconds per day. &nbsp;It will be a few more days until we 
+find out what the error rate really is. &nbsp;This device does allow you
+ to trim the clock with an adjustment of up to&nbsp;+/- 127ppm, so we 
+may be able to get quite accurate. &nbsp;It does not do temperature 
+compensation as the DS3231 does, so it is still going to drift with 
+temperature. &nbsp;This is clearly a problem for a project such 
+as&nbsp;Project Curacao in the tropics.</p>
+<h2>Project Curacao, Arduino and the&nbsp;MCP79400</h2>
+<p>We used a Adafruit DS1307 on <a title="Project Curacao Introduction – Part 1" href="http://www.switchdoc.com/project-curacao-introduction-part-1/" target="_blank">Project Curacao</a> connected to the <a title="Project Curacao – Arduino Battery Watchdog – Part 3" href="http://www.switchdoc.com/project-curacao-arduino-battery-watchdog-part-3/" target="_blank">Arduino Battery Watchdog</a>.
+ This has been the source of reliability issues on the Arduino. It 
+requires a reboot (power on / off) about once a month. And it is the 
+DS1307 getting lost. Noise? Heat? We are not sure. But we are replacing 
+it in September possibly with the MCP79400, but more likely the DS3231 
+which is temperature compensated.</p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-577" class="share-google-plus-1 sd-button share-icon" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/?share=google-plus-1&amp;nb=1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-577" class="share-facebook sd-button share-icon" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/?share=facebook&amp;nb=1" target="_blank" title="Share on Facebook"><span>Facebook</span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-577" class="share-twitter sd-button share-icon" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-tumblr"><a rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/?share=tumblr&amp;nb=1" target="_blank" title="Click to share on Tumblr"><span>Tumblr</span></a></li><li class="share-reddit"><a rel="nofollow" data-shared="" class="share-reddit sd-button share-icon" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/?share=reddit&amp;nb=1" target="_blank" title="Click to share on Reddit"><span>Reddit</span></a></li><li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-577" class="share-pinterest sd-button share-icon" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/?share=pinterest&amp;nb=1" target="_blank" title="Click to share on Pinterest"><span>Pinterest<span class="share-count">1</span></span></a></li><li class="share-stumbleupon"><a rel="nofollow" data-shared="" class="share-stumbleupon sd-button share-icon" href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/?share=stumbleupon&amp;nb=1" target="_blank" title="Click to share on StumbleUpon"><span>StumbleUpon</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-66541695-577-556c97a694c44" data-src="//widgets.wp.com/likes/#blog_id=66541695&amp;post_id=577&amp;origin=www.switchdoc.com&amp;obj_id=66541695-577-556c97a694c44" data-name="like-post-frame-66541695-577-556c97a694c44"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-66541695-577-556c97a694c44" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/a.html" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts" data-exclude="531">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="599" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="0" data-origin="577" rel="nofollow" title="Raspberry Pi Python Library for the DS3231
+
+Raspberry Pi Python Library for DS3231&nbsp;Real Time Clock Here is the third&nbsp;of a series of Python libraries for the Raspberry Pi for various Real Time Clocks (RTC). &nbsp;This is the pure Python driver for the DS3231&nbsp;Real Time Clock(SwitchDoc Module here). The original code is the DS1307 library from @XiErCh. The…" href="http://www.switchdoc.com/2014/08/raspberry-pi-python-library-ds3231/" class="jp-relatedposts-post-a">Raspberry Pi Python Library for the DS3231</a></span><span class="jp-relatedposts-post-date">August 3, 2014</span><span class="jp-relatedposts-post-context">In "Project Curacao"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="531" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="1" data-origin="577" rel="nofollow" title="Raspberry Pi Python Library for DS1307
+
+Raspberry Pi Python Library&nbsp;for DS1307 Real Time Clock We have now released the first of a series of Python libraries for the Raspberry Pi for various Real Time Clocks (RTC). &nbsp;We are also including how to modify the DS1307 to run with the Raspberry Pi. &nbsp;The original code is the…" href="http://www.switchdoc.com/2014/07/python-driver-ds1307-real-time-clock/" class="jp-relatedposts-post-a">Raspberry Pi Python Library for DS1307</a></span><span class="jp-relatedposts-post-date">July 20, 2014</span><span class="jp-relatedposts-post-context">In "Arduino"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="757" data-post-format="false"><span class="jp-relatedposts-post-title"><a data-position="2" data-origin="577" rel="nofollow" title="Real Time Clock Python Libraries For Raspberry Pi - Reviews
+
+Real Time Clock Python Libraries For Raspberry Pi - DS1307, DS3231, PCF8563, MCP79400 - Reviews/Results For devices like the Raspberry Pi, a Real Time Clock (RTC) is needed anytime the device is not connected to the Internet (if you care what time it is!). &nbsp;NTP will keep your clock close…" href="http://www.switchdoc.com/2014/09/real-time-clock-python-libraries-raspberry-pi/" class="jp-relatedposts-post-a">Real Time Clock Python Libraries For Raspberry Pi - Reviews</a></span><span class="jp-relatedposts-post-date">September 3, 2014</span><span class="jp-relatedposts-post-context">In "Arduino"</span></p></div></div>		
+	</div>
+	
+	
+		</div>
+	<!-- END .blog-post-sec -->
+	
+			<div class="separator" id="blog-content-separator"></div>
+		<!-- START .from-the-blog-meta -->
+	<ul class="from-the-blog-meta clearfix">
+		<li class="published print-tag"></li>
+		
+					<li class="comment-count"><a href="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/#comments" title="View comments." class="meta-post comment-count"><span class="icon"></span>4</a></li>
+				
+		<li class="like-count"><a href="#" title="Like Raspberry Pi Python Library for the MCP79400" id="like-577" class="like-count-sec"><span class="icon"></span>0</a></li>
+	</ul>
+	<!-- END .from-the-blog-meta -->
+	
+	<div class="spacer"></div>
+	
+	
+	</div>
+	
+	
+			<div class="clear"></div>
+<!-- BEGIN .separator -->
+<div class="separator">
+	<div original-title="" class="separator-icon"><span class="icon-comments-alt"></span></div>
+</div>
+<!-- END .separator --> 
+
+<div class="comments-wrapper clearfix" id="comments">
+	<!-- Comments Title -->
+	<h4>
+	There are 4 comments so far	</h4>
+       
+		<ul class="commentlist">
+						
+	</ul>
+	
+	<div class="blog-comment-pagination clearfix">	
+		</div>
+	<div class="clear"></div>
+	
+		<div class="spacer"></div>
+	
+	<!-- BEGIN #respond -->
+	<div id="respond">
+			
+		<div class="separator-small"></div>
+		<div class="spacer"></div>
+		
+		<h4>Leave a Comment</h4>
+		<span>Don't worry. We never use your email for spam.</span>
+
+	</div>
+	<!-- END #respond -->
+
+		
+	<!-- Respond Script -->
+	<script>
+		jQuery(document).ready(function(){
+			jQuery("#commentform").validate();
+		});
+	</script>
+		
+	<form action="http://www.switchdoc.com/wp-comments-post.php" method="post" id="commentform">
+					
+			<p>
+				<input class="required requiredField" name="author" id="author" size="22" tabindex="1" type="text">
+				<label for="author">Name <small>*</small></label>
+			</p>
+			<p>
+				<input class="required requiredField email" name="email" id="email" size="22" tabindex="2" type="text">
+				<label for="email">Email <small>*</small></label>
+			</p>		
+			<p>
+				<input name="url" id="url" size="22" tabindex="3" type="text">
+				<label for="url">Website</label>
+			</p>
+			
+					
+		<p>
+			<textarea class="required requiredField" name="comment" id="comment" cols="55" rows="10" tabindex="4"></textarea>
+		</p>
+		<p class="form-disclaimer"><small>Don't worry. We never use your email for spam.</small></p>
+		<!--<p class="allowed-tags"><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+			
+		<p class="no-margin">
+			<button name="submit" class="button btn-large btn-orange" type="submit" id="submit" tabindex="5">Submit Comment</button>
+		</p>
+		
+		<input name="comment_post_ID" value="577" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+		<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="6fe80a4e82" type="hidden"></p><p class="comment-subscription-form"><input name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p style="display: none;"></p>			<input id="ak_js" name="ak_js" value="1433180072283" type="hidden"></form>
+
+</div>
+
+			<div class="spacer"></div>
+				
+			
+		</div>
+		<!-- END #main-content-with-sidebar -->
+
+		<!-- START #main-sidebar -->
+		<div id="main-sidebar" class="col-4">
+			<!-- START #main-sidebar-inner -->
+			<div id="main-sidebar-inner">
+						
+			</div>
+			<!-- END #main-sidebar-inner -->
+		</div>
+		<!-- END #main-sidebar -->
+		
+		</div>
+		<!-- END #sidebar-page-wrapper -->
+
+	
+	</div>
+	<!-- END #main-inner-wrapper -->
+	
+	</div>
+	<!-- END #main-content -->
+	
+	<!-- START #footer -->
+	
+			<div id="footer" class="four-column-footer">
+		
+			<div class="arrow-down"></div>
+			
+			<!-- START #footer-inned -->
+			<div id="footer-inner" class="container clearfix">
+			<div class="col-3 widget-column"><div id="sfmsb_settings-3" class="widget-item sfmsb_widget"><div class="sfmsb-follow-social-buttons sfmsb-under sfmsb-circle 30 horizontal"><span class="sfmsb-text" style="font-size:18px;">Follow us on:</span><a target="_blank" href="https://twitter.com/switchdoclabs"><span class="sfmsb-icon-twitter circle" style="color:#84b3dc;font-size:30px;" data-color="#84b3dc"></span></a><a target="_blank" href="https://www.facebook.com/pages/SwitchDoc-Labs/1458357251078999"><span class="sfmsb-icon-facebook circle" style="color:#6c97bf;font-size:30px;" data-color="#6c97bf"></span></a><a target="_blank" href="https://plus.google.com/+JohnShovic/"><span class="sfmsb-icon-googleplus circle" style="color:#d68778;font-size:30px;" data-color="#d68778"></span></a><a target="_blank" href="http://www.github.com/switchdoclabs"><span class="sfmsb-icon-github circle" style="color:#717272;font-size:30px;" data-color="#717272"></span></a><a target="_blank" href="https://www.tumblr.com/blog/switchdoc"><span class="sfmsb-icon-tumblr circle" style="color:#436381;font-size:30px;" data-color="#436381"></span></a><div class="clearfix"></div></div></div><div id="search-3" class="widget-item widget_search"><h4>Search SwitchDoc</h4><form role="search" method="get" id="search-404" action="http://www.switchdoc.com/">
+	<input placeholder="Search and hit enter..." name="s" id="search" type="text">
+	<input id="submit-search" value="" type="submit"> 
+</form>
+</div><div id="blog_subscription-2" class="widget-item jetpack_subscription_widget"><h4>Subscribe to SwitchDoc via Email</h4>
+			<form action="#" method="post" accept-charset="utf-8" id="subscribe-blog-blog_subscription-2">
+				<div id="subscribe-text"><p>Enter your email address to subscribe to this blog and receive notifications of new posts by email.</p>
+</div>					<p id="subscribe-email">
+						<label style="clip: rect(1px, 1px, 1px, 1px); position: absolute; height: 1px; width: 1px; overflow: hidden;" id="jetpack-subscribe-label" for="subscribe-field">
+							Email Address						</label>
+						<input name="email" id="subscribe-field" placeholder="Email Address" type="email">
+					</p>
+
+					<p id="subscribe-submit">
+						<input name="action" value="subscribe" type="hidden">
+						<input name="source" value="http://www.switchdoc.com/2014/07/raspberry-pi-python-library-mcp79400-real-time-clock/?relatedposts_hit=1&amp;relatedposts_origin=531&amp;relatedposts_position=1" type="hidden">
+						<input name="sub-type" value="widget" type="hidden">
+						<input name="redirect_fragment" value="blog_subscription-2" type="hidden">
+												<input value="Subscribe" name="jetpack_subscriptions_widget" type="submit">
+					</p>
+							</form>
+
+			<script>
+				( function( d ) {
+					if ( ( 'placeholder' in d.createElement( 'input' ) ) ) {
+						var label = d.getElementById( 'jetpack-subscribe-label' );
+	 					label.style.clip 	 = 'rect(1px, 1px, 1px, 1px)';
+	 					label.style.position = 'absolute';
+	 					label.style.height   = '1px';
+	 					label.style.width    = '1px';
+	 					label.style.overflow = 'hidden';
+					}
+				} ) ( document );
+			</script>
+		 
+		
+</div><div id="recent-comments-2" class="widget-item widget_recent_comments"><h4>Recent Comments</h4><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Levon</span> on <a href="http://www.switchdoc.com/sunairplus-solar-power-controllerdata-collector/#comment-4204">SunAirPlus Solar Power Controller/Data Collector</a></li><li class="recentcomments"><span class="comment-author-link">Levon</span> on <a href="http://www.switchdoc.com/sunairplus-solar-power-controllerdata-collector/#comment-4203">SunAirPlus Solar Power Controller/Data Collector</a></li><li class="recentcomments"><span class="comment-author-link">Brian Page</span> on <a href="http://www.switchdoc.com/weatherpiarduino-bare-board/#comment-4201">WeatherPiArduino Weather Board</a></li><li class="recentcomments"><span class="comment-author-link">John Shovic</span> on <a href="http://www.switchdoc.com/weatherpiarduino-bare-board/#comment-4200">WeatherPiArduino Weather Board</a></li><li class="recentcomments"><span class="comment-author-link">John Shovic</span> on <a href="http://www.switchdoc.com/weatherrack-weather-sensors/#comment-4199">WeatherRack Weather Sensors</a></li></ul></div><div id="archives-2" class="widget-item widget_archive"><h4>Archives</h4>		<ul>
+	<li><a href="http://www.switchdoc.com/2015/05/">May 2015</a></li>
+	<li><a href="http://www.switchdoc.com/2015/04/">April 2015</a></li>
+	<li><a href="http://www.switchdoc.com/2015/03/">March 2015</a></li>
+	<li><a href="http://www.switchdoc.com/2015/02/">February 2015</a></li>
+	<li><a href="http://www.switchdoc.com/2015/01/">January 2015</a></li>
+	<li><a href="http://www.switchdoc.com/2014/12/">December 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/11/">November 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/10/">October 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/09/">September 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/08/">August 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/07/">July 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/06/">June 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/05/">May 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/04/">April 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/03/">March 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/02/">February 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2014/01/">January 2014</a></li>
+	<li><a href="http://www.switchdoc.com/2013/12/">December 2013</a></li>
+	<li><a href="http://www.switchdoc.com/2013/11/">November 2013</a></li>
+		</ul>
+</div><div id="categories-2" class="widget-item widget_categories"><h4>Categories</h4>		<ul>
+	<li class="cat-item cat-item-40"><a href="http://www.switchdoc.com/category/3d-printing/">3D Printing</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://www.switchdoc.com/category/arduinocat/">Arduino</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://www.switchdoc.com/category/arduinosoftware/">Arduino Software</a>
+</li>
+	<li class="cat-item cat-item-37"><a href="http://www.switchdoc.com/category/beaconair/" title="BeaconAir is a iBeacon enabled Raspberry Pi Project">BeaconAir</a>
+</li>
+	<li class="cat-item cat-item-39"><a href="http://www.switchdoc.com/category/bluetooth-low-energy/">Bluetooth Low Energy</a>
+</li>
+	<li class="cat-item cat-item-53"><a href="http://www.switchdoc.com/category/breakout-boards/">Breakout Boards</a>
+</li>
+	<li class="cat-item cat-item-54"><a href="http://www.switchdoc.com/category/i2c-mux-breakout-board/">I2C Mux Breakout Board</a>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://www.switchdoc.com/category/ibeacon/" title="iBeacons - Bluetooth Low Energy transmitters">iBeacon</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://www.switchdoc.com/category/ios/">IOS</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="http://www.switchdoc.com/category/matplotlibgraphs/">Matplotlib Graphs</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.switchdoc.com/category/mouseair-2/">MouseAir</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="http://www.switchdoc.com/category/pi-camera/">Pi Camera</a>
+</li>
+	<li class="cat-item cat-item-42"><a href="http://www.switchdoc.com/category/products/">Products</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.switchdoc.com/category/projectcuracaocat/" title="Posts on Project Curacao
+">Project Curacao</a>
+</li>
+	<li class="cat-item cat-item-43"><a href="http://www.switchdoc.com/category/projectcat/">Projects</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://www.switchdoc.com/category/pythonsoftware/">Python Raspberry Pi Software</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.switchdoc.com/category/raspberrypicat/">Raspberry Pi</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="http://www.switchdoc.com/category/raspiconnect-2/">RasPiConnect</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.switchdoc.com/category/real-time-clocks/">Real Time Clocks</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://www.switchdoc.com/category/sensorscat/">Sensors</a>
+</li>
+	<li class="cat-item cat-item-33"><a href="http://www.switchdoc.com/category/software/">Software</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://www.switchdoc.com/category/solarpowercat/">Solar Power</a>
+</li>
+	<li class="cat-item cat-item-47"><a href="http://www.switchdoc.com/category/sunair/">SunAir</a>
+</li>
+	<li class="cat-item cat-item-50"><a href="http://www.switchdoc.com/category/sunairplus/">SunAirPlus</a>
+</li>
+	<li class="cat-item cat-item-48"><a href="http://www.switchdoc.com/category/sunrover/">SunRover</a>
+</li>
+	<li class="cat-item cat-item-45"><a href="http://www.switchdoc.com/category/switchdoc-watchdog/">SwitchDoc Dual WatchDog Timer</a>
+</li>
+	<li class="cat-item cat-item-46"><a href="http://www.switchdoc.com/category/switchdoc-products/">SwitchDoc Products</a>
+</li>
+	<li class="cat-item cat-item-52"><a href="http://www.switchdoc.com/category/usb-power-control/">USB Power Control</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.switchdoc.com/category/weather/">Weather</a>
+</li>
+	<li class="cat-item cat-item-44"><a href="http://www.switchdoc.com/category/weatherpiarduino/">WeatherPiArduino</a>
+</li>
+	<li class="cat-item cat-item-51"><a href="http://www.switchdoc.com/category/weatherrack/">WeatherRack</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://www.switchdoc.com/category/windpowercat/">Wind Power</a>
+</li>
+		</ul>
+</div><div id="meta-2" class="widget-item widget_meta"><h4>Meta</h4>			<ul>
+						<li><a rel="nofollow" href="http://www.switchdoc.com/wp-login.php">Log in</a></li>
+			<li><a href="http://www.switchdoc.com/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.switchdoc.com/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+</div></div><div class="col-3 widget-column"></div><div class="col-3 widget-column"></div><div class="col-3 widget-column last-column"></div>			</div>
+			<!-- END #footer-inner -->
+		</div>
+		<!-- END #footer -->
+	
+	</div>
+	<!-- END #content-inner -->
+
+	</div>
+	<!-- END #content -->
+
+			<!-- START #bottom-line -->
+		<div id="bottom-line" class="container clearfix">
+	    	<div id="bottom-inner" class="col-12 clearfix">
+	    		<div id="copyright-line">
+	            	Copyright 2015 SwitchDoc Labs, LLC	            </div>
+		
+				<div id="footer-nav" class="menu-home-container"><ul id="footer-navigation"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-84"><span>/</span><a href="http://www.switchdoc.com/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1910"><span>/</span><a href="http://www.switchdoc.com/switchdoc-labs-products-2/">SwitchDoc Labs Products</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-641"><span>/</span><a href="http://www.switchdoc.com/category/projectcat/">Projects</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-338"><span>/</span><a href="http://www.switchdoc.com/category/mouseair-2/">MouseAir</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-370"><span>/</span><a href="http://www.switchdoc.com/category/beaconair/">BeaconAir</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-713"><span>/</span><a href="http://www.switchdoc.com/category/weatherpiarduino/">WeatherPiArduino</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-98"><span>/</span><a href="http://www.switchdoc.com/">Project Curacao-Ard/Pi</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-100"><span>/</span><a href="http://www.switchdoc.com/project-curacao-introduction-part-1/">Project Curacao Introduction – Part 1</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-99"><span>/</span><a href="http://www.switchdoc.com/project-curacao-solar-power-subsystem-part-2/">PC Solar Power Subsystem – Part 2</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><span>/</span><a href="http://www.switchdoc.com/project-curacao-arduino-battery-watchdog-part-3/">Project Curacao – Arduino Battery Watchdog – Part 3</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-120"><span>/</span><a href="http://www.switchdoc.com/project-curacao-environmental-subsystem-part-4/">Project Curacao – Environmental Subsystem – Part 4</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-119"><span>/</span><a href="http://www.switchdoc.com/project-curacao-camera-subsystem-part-5/">Project Curacao – Camera Subsystem – Part 5</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118"><span>/</span><a href="http://www.switchdoc.com/project-curacao-software-system-part-6/">Project Curacao – Software System – Part 6</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117"><span>/</span><a href="http://www.switchdoc.com/installation-of-project-curacao-part-7/">Project Curacao – Installation/First Months – Part 7</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1862"><span>/</span><a href="http://www.switchdoc.com/switchdoc-labs-really-useful-blogs/">Blogs</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-448"><span>/</span><a href="http://www.switchdoc.com/category/windpowercat/">Wind Power</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-449"><span>/</span><a href="http://www.switchdoc.com/category/solarpowercat/">Solar Power</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-519"><span>/</span><a href="http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&amp;field-keywords=switchdoc+labs" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&amp;field-keywords=switchdoc+labs', 'Store');">Store</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-133"><span>/</span><a href="http://www.switchdoc.com/about/">About</a></li>
+</ul></div>		
+	          
+	            
+	    	</div>
+	    </div>
+	    <!-- END #bottom-line -->
+    
+	</div>
+	<!-- END #wrapper -->
+
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49587916-1', 'auto');
+  ga('send', 'pageview');
+
+</script>	
+	
+<div class="sc-chat-animated sc-chat-bounce-in-up" style="bottom: -384px; visibility: visible;" id="sc_chat_box">
+	
+	<div class="sc-chat-header">
+		<span class="sc-chat-header-title">
+			Contact us		</span>
+		<i></i>
+	</div>
+	
+	<div class="sc-chat-wrapper">
+		
+					
+			<form action="index.php" id="SC_contact_form">
+				
+				<input name="action" value="sc_chat_ajax_callback" type="hidden">
+				
+				<p class="sc-lead">We're not around right now. But you can send us an email and we'll get back to you, asap.</p>
+				
+								
+				<label for="f_chat_user_name">Your name <span class="sc-req">*</span>:</label>
+				
+				<input name="f_chat_user_name" id="f_chat_user_name" placeholder="Your name (Required)" type="text">
+				
+								<label for="f_chat_user_email">E-mail <span class="sc-req">*</span>:</label>
+				
+				<input name="f_chat_user_email" id="f_chat_user_email" placeholder="E-mail (Required)" type="email">
+				
+				
+								
+								<label for="f_chat_user_question">Got a question? <span class="sc-req">*</span>:</label>
+				
+				<textarea name="f_chat_user_question" id="f_chat_user_question" placeholder="Got a question? (Required)" rows="1"></textarea>
+				
+				<!-- Notifications -->
+				<div class="sc-chat-notification"></div>
+				
+				<!-- Start Chat Button -->
+				<div class="sc-start-chat-btn">
+					<a href="javascript:void(0)" id="SC_send_form_btn">Send</a>
+				</div>
+				
+			</form>
+		
+			
+	</div>
+	
+	<div id="Conversation">
+
+		
+		<div class="sc-cnv-wrap">
+			
+			<p class="sc-lead">Questions, issues or concerns? I'd love to help you!</p>
+			
+		</div>
+		
+		
+		<!-- Notifications -->
+		<div class="sc-chat-notification"></div>
+		
+		<div class="sc-chat-toolbar">
+			<div class="sc-chat-toolbar-btns">
+				<a href="javascript:void(0)" class="sc-chat-btn-logout">End chat</a>
+			</div>
+		</div>
+				
+				<form id="Reply_form" method="post" action="index.php" class="sc-chat-reply">
+			<input name="action" value="sc_chat_ajax_callback" type="hidden">
+			
+			<textarea name="chat_line" class="f-chat-line" maxlength="255" placeholder="Write a reply"></textarea>
+			
+			<small class="sc-chat-note">Click ENTER to chat</small>
+		</form>
+		
+	</div>
+	
+</div>
+	<script type="text/javascript">
+		WPCOM_sharing_counts = {"http:\/\/www.switchdoc.com\/2014\/07\/raspberry-pi-python-library-mcp79400-real-time-clock\/":577}	</script>
+		<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-google-plus-1' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-twitter' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-tumblr' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+		});
+		</script>
+							<script type="text/javascript">
+			jQuery(document).on('ready', function(){
+				jQuery('body').on('click', 'a.share-pinterest', function(e){
+					e.preventDefault();
+
+					// Load Pinterest Bookmarklet code
+					var s = document.createElement("script");
+					s.type = "text/javascript";
+					s.src = window.location.protocol + "//assets.pinterest.com/js/pinmarklet.js?r=" + ( Math.random() * 99999999 );
+					var x = document.getElementsByTagName("script")[0];
+					x.parentNode.insertBefore(s, x);
+
+					// Trigger Stats
+					var s = document.createElement("script");
+					s.type = "text/javascript";
+					s.src = this + ( this.toString().indexOf( '?' ) ? '&' : '?' ) + 'js_only=1';
+					var x = document.getElementsByTagName("script")[0];
+					x.parentNode.insertBefore(s, x);
+				});
+			});
+			</script>
+		<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/form.js"></script>
+
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/photon.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_013.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/www.switchdoc.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/scripts.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_018.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_020.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_010.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_015.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_014.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_011.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_009.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_021.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_016.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_019.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_017.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_012.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/comment-reply.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/jquery_022.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/cookie.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sc_chat = {"ajaxurl":"\/\/www.switchdoc.com\/wp-admin\/admin-ajax.php","plugin_url":"http:\/\/www.switchdoc.com\/wp-content\/plugins\/screets-chat","tr_no_one_online":"No one is online","tr_logout":"Logout","tr_sending":"Sending","tr_in_chat_header":"Now Chatting","tr_offline_header":"Contact us","tr_wait":"Please wait","use_css_anim":"1","sound_package":"basic","delay":"2","is_admin":"","is_op":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/App.js"></script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/queuehandler.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/sharing.js"></script>
+		<iframe src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		<script type="text/javascript" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/e-201523.js" async="" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.4.3',blog:'66541695',post:'577',tz:'-8'} ]);
+	_stq.push([ 'clickTrackerInit', '66541695', '577' ]);
+</script>
+
+
+
+
+
+<a style="display: block;" href="#" id="scrollTop"><span class="icon-angle-up"></span></a><div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><img scale="0" id="wpstats" src="Raspberry%20Pi%20Python%20Library%20for%20the%20MCP79400%20-%20SwitchDoc%20Labs_files/g.gif"></body><!-- END body --></html>
+<!-- END html -->

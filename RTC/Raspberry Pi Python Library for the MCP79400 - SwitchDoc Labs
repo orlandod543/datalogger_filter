@@ -1,0 +1,59 @@
+Raspberry Pi Python Library for MCP79400 Real Time Clock
+Real Time Clock Raspberry Pi
+
+Four RTC Test Jig Running Month Long Test
+
+Here is the second of a series of Python libraries for the Raspberry Pi for various Real Time Clocks (RTC).  This is the pure Python driver for the MCP79400 Real Time Clock. The original code is the DS1307 library from @XiErCh. The main changes involve removing the 12 hour mode, which didn’t work correctly in all cases and a different clock starting procedure. This library now only runs in 24 hour mode. We will be releasing libraries for the  DS3231 and the PCF8563 over the next couple of weeks. To the left is a picture of the four RTC test jig.  The MCP79400 library is on https://github.com/switchdoclabs/RTC_SDL_MCP79400.
+The MCP79400 (we used the BM005 Clock and Calendar Module from Solutions Cubed, LLC) is a 3.3V and 5V device. You just connect it up to the Raspberry Pi I2C pins and you are ready to go.
+MCP79400 Raspberry Pi
+
+MCP79400 BM005 Test Jig
+
+We will be releasing libraries for the  DS3231 and PCF8563 in the next few weeks.  The python library for the DS1307 has already been released (https://github.com/switchdoclabs/RTC_SDL_DS1307).
+Example Code for the MCP79400
+
+There is a testSDL_MCP79400.py included with the library. Here is the bare code needed:
+
+import sys
+import time
+import datetime
+
+import SDL_MCP79400
+
+# Main Program
+
+print ""
+print "Test SDL_MCP79400 Version 1.0 - SwitchDoc Labs"
+print ""
+print ""
+print "Program Started at:"+ time.strftime("%Y-%m-%d %H:%M:%S")
+
+filename = time.strftime("%Y-%m-%d%H:%M:%SRTCTest") + ".txt"
+starttime = datetime.datetime.utcnow()
+
+# MCP79400
+# Note: MCP79400 can't quite use the same library as DS1307 for read/write time
+# There are differences in starting the clock
+mcp79400 = SDL_MCP79400.SDL_MCP79400(1, 0x6F)
+mcp79400.write_now()
+
+# Main Loop - sleeps 10 minutes, then reads and prints values of all clocks
+
+
+while True:
+
+ currenttime = datetime.datetime.utcnow()
+
+ deltatime = currenttime - starttime
+
+ print ""
+ print "Raspberry Pi=\t" + time.strftime("%Y-%m-%d %H:%M:%S")
+
+ print "MCP79400=\t\t%s" % mcp79400.read_datetime()
+
+ time.sleep(10.0)
+
+You should see a result like this:
+
+Raspberry Pi= 2014-07-27 19:36:32
+ MCP79400= 2014-07-27 19:36:32

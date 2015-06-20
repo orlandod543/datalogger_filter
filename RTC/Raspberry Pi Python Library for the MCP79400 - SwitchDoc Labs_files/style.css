@@ -1,0 +1,11 @@
+/*
+Theme Name:     Aegaeus Child
+Theme URI:      http://hb-themes.com/themes/aegaeus_wp/
+Description:    Child theme for the Aegaeus theme 
+Author:         HB-Themes
+Author URI:     http://hb-themes.com/
+Template:       AegaeusWP
+Version:        1.0
+*/
+
+@import url("../AegaeusWP/style.css");
