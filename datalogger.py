@@ -4,8 +4,8 @@ import dropbox_log
 import webserver_pull
 import pendrive
 from time import localtime, strftime
-time_sample = 1 # defino el tiempo de muestreo
-time_upload_db = 5
+time_sample = 30 # defino el tiempo de muestreo en seegundos
+time_upload_db = 3600 #defino el tiempo de subida a dropbox en segundos tambien
 
 app_key = 'esipcaghf8ayg6m'
 app_secret = '66hyaeakvpzrrxc'
@@ -47,8 +47,15 @@ else:
 
     pull = True #esta variable me indica cuando debo de hacer un pull de datos
     db_counter = 0
+    start_time = time.time()
+    db_time = 0
+    start_db_time =time_upload_db + 100
+
+
     while True:
-        
+        print 'han pasado exactamente tantos ' + str(time.time()-start_time) + ' desde el ultimo muestreo'
+        start_time = time.time()
+
         #Esta es la parte que obtiene los datos del servidos
 
         
@@ -77,12 +84,15 @@ else:
         else:
             p.write_append(filename,datastr)
 
+        if (time.time()-start_db_time>= time_upload_db):
+            print 'tiempo de subir a bropbox, han pasado'+ str(time.time()-start_db_time)+'segundos'
 
-
-
-
+            dropbox_orlando.send_overwrite(pendrivepath,filename,db_folder) #subo el archivo a mi dropbox
+            dropbox_pd.send_overwrite(pendrivepath,filename,db_folder) #subo el archivo al dropbox de pulse dynamics
+            start_db_time = time.time()
+        '''
         #Esta es la parte de dropbox
-        if db_counter >= time_upload_db :
+        if db_counter >= time_upload_db /time_sample:
 
             dropbox_orlando.send_overwrite(pendrivepath,filename,db_folder) #subo el archivo a mi dropbox
             dropbox_pd.send_overwrite(pendrivepath,filename,db_folder) #subo el archivo al dropbox de pulse dynamics
@@ -90,8 +100,16 @@ else:
             db_counter = 0
         #Esta es la parte que hace el resto
         db_counter += 1
-        time.sleep(time_sample)
-        pull=True
+        '''
+        print "el tiempo es " + str(time.time()-start_time)
+        if (time.time()-start_time)>= time_sample:
+            pull= True
+        else:
+            time.sleep(time_sample-(time.time()-start_time))
+            pull = True
+
+
+
     
         
     

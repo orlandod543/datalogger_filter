@@ -134,7 +134,7 @@ class webserver():
         P2 = self.var_dict['P2']
         P4 = self.var_dict['P4']
 
-        if (P0-P7)>=5 :
+        if (P0-P7)>=5 and (P2-P4)!=0:
             self.var_dict['packing'] = (P0-P2)/(P2-P4)
         else:
             self.var_dict['packing'] = 0
@@ -224,7 +224,7 @@ class webserver():
         return self.var_dict['ATEX']
 
     def pull_datastring(self): #esta funcion hace un pull del webserver y saca de una vez el string de datos
-        date = strftime("%y-%m-%d-%H:%M:%S", localtime()) #obtengo la hora del momento de la toma de muestras
+        date = strftime("%H:%M:%S", localtime()) #obtengo la hora del momento de la toma de muestras
         print date
         self.pull()
         datastr = date + ","
