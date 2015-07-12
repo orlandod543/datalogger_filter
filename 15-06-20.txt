@@ -1,2 +1,0 @@
-YY-MM-DD-HH:MM:SS,T1,T3,T4,T8,T12,T13,T14,P0,P2,P4,P5,P6,P7,O1,O2,Qin,inlet,inlet_per,bell,bell_per,packing,cyclon,cyclon_per,cooler_filt1,cooler_filt1_per,filt2,filt2_per,dp_tot,Qout,ATEX
-15-06-20-04:49:55,27,67,32,27,25,24,24,1013,1013,1013,1013,1013,1013,-1368,-1520,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NOK

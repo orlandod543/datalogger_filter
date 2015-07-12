@@ -72,7 +72,7 @@ else:
 
         if p.file_exists(filename) == False: #pregunto si el archivo existe
             print "creando el archivo nuevo"
-            datastr = "YY-MM-DD-HH:MM:SS,"
+            datastr = "HH:MM:SS,"
             for i in webserver.variables_calc:
                 datastr += i
                 if not webserver.variables_calc[len(webserver.variables_calc) - 1] == i: #aqui inicio el header con las variables que quiero

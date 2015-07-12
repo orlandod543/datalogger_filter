@@ -61,7 +61,7 @@ class webserver():
                     valor = re.findall(self.pattern,htmltext) #busco el valor de acuerdo al patron dado
                     if not valor[0] == []:#si el valor no es vacio(osea encontro un match)
                     #    print valor[0]
-                        self.var_dict[i] = int(round(float(valor[0]))) #guardo la variable como un entero en el diccionario
+                        self.var_dict[i] = round(float(valor[0]),1) #guardo la variable como un entero en el diccionario
                     else:
                         self.var_dict[i] = int(0) #de lo contrario guardo 0
                 print i , ":", self.var_dict[i]
