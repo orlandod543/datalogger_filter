@@ -20,6 +20,7 @@ url = "http://46.229.95.116/awp/PulseDynamics/IO/IO_"
 timeout = 2
 
 
+
 try:
     var_file = open("variables") #abro el archivo que contendra las variables a buscar
 except:
