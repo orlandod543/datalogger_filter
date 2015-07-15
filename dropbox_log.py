@@ -7,15 +7,25 @@ class dropbox_log(dropbox.client.DropboxClient):
 
 
     def __init__(self,access_token,folder):
-        dropbox.client.DropboxClient.__init__(self,access_token)
-        self.db_folder = folder
+        try:
+            dropbox.client.DropboxClient.__init__(self,access_token)
+            self.db_folder = folder
+        except:
+            print "No se pudo configurar el token"
 
 
     def send_overwrite(self,folder,filename,db_folder):
         print 'linked account: ', self.info_cuenta()
-        f = open(folder + filename, 'rb')
-        response = self.put_file(db_folder+filename, f,overwrite = True)
-        print "uploaded:", response
+        try:
+            f = open(folder + filename, 'rb')
+        except IOError:
+            return -1
+
+        try:
+            response = self.put_file(db_folder+filename, f,overwrite = True)
+            print "uploaded:", response
+        except:
+            print "No se pudo enviar el archivo"
         f.close()
 
     def info_cuenta(self):

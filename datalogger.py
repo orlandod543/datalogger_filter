@@ -12,8 +12,8 @@ app_secret = '66hyaeakvpzrrxc'
 access_token = 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT'
 access_token_pd = 'oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D'
 
-#pendrivepath = '/home/orlando/dataloggerweb/'
-pendrivepath = "/media/pendrive/"
+pendrivepath = '/home/orlando/dataloggerweb/'
+#pendrivepath = "/media/pendrive/"
 db_folder = "/mnt/sda1/"
 
 url = "http://46.229.95.116/awp/PulseDynamics/IO/IO_"
@@ -84,23 +84,17 @@ else:
         else:
             p.write_append(filename,datastr)
 
+
+            ## Esta parte es la que sube las cosas a dropbox
+
         if (time.time()-start_db_time>= time_upload_db):
             print 'tiempo de subir a bropbox, han pasado'+ str(time.time()-start_db_time)+'segundos'
 
             dropbox_orlando.send_overwrite(pendrivepath,filename,db_folder) #subo el archivo a mi dropbox
             dropbox_pd.send_overwrite(pendrivepath,filename,db_folder) #subo el archivo al dropbox de pulse dynamics
             start_db_time = time.time()
-        '''
-        #Esta es la parte de dropbox
-        if db_counter >= time_upload_db /time_sample:
 
-            dropbox_orlando.send_overwrite(pendrivepath,filename,db_folder) #subo el archivo a mi dropbox
-            dropbox_pd.send_overwrite(pendrivepath,filename,db_folder) #subo el archivo al dropbox de pulse dynamics
 
-            db_counter = 0
-        #Esta es la parte que hace el resto
-        db_counter += 1
-        '''
         print "el tiempo es " + str(time.time()-start_time)
         if (time.time()-start_time)>= time_sample:
             pull= True

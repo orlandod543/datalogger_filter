@@ -89,7 +89,7 @@ class webserver():
         P0 = self.var_dict['P0']
         P7 = self.var_dict['P7']
 
-        self.var_dict['dp_tot'] = P0-P7
+        self.var_dict['dp_tot'] = round(float(P0-P7),1)
 
         return self.var_dict['dp_tot']
 
@@ -97,7 +97,7 @@ class webserver():
         P0 = self.var_dict['P0']
         P2 = self.var_dict['P2']
 
-        self.var_dict['inlet'] = P0-P2
+        self.var_dict['inlet'] = round(float(P0-P2),1)
 
         return self.var_dict['inlet']
 
@@ -105,7 +105,7 @@ class webserver():
         P2 = self.var_dict['P2']
         P4 = self.var_dict['P4']
 
-        self.var_dict['bell'] = P2 - P4
+        self.var_dict['bell'] = round(float(P2 - P4),1)
 
         return self.var_dict['bell']
 
@@ -113,7 +113,7 @@ class webserver():
         P4 = self.var_dict['P4']
         P5 = self.var_dict['P5']
 
-        self.var_dict['cyclon'] = P4-P5
+        self.var_dict['cyclon'] = round(float(P4-P5),1)
 
         return self.var_dict['cyclon']
 
@@ -122,7 +122,7 @@ class webserver():
         P2 = self.var_dict['P2']
 
         if P0 != P2 and P2 < P0 :
-            self.var_dict['Qin'] = 0.259*0.001520531*sqrt(2*(P0-P2)*100/1.17)*3600
+            self.var_dict['Qin'] = round(float(0.259*0.001520531*sqrt(2*(P0-P2)*100/1.17)*3600),1) #hace el calculo redondeado a 1 decimal
         else:
             self.var_dict['Qin'] = 0
 
@@ -135,7 +135,7 @@ class webserver():
         P4 = self.var_dict['P4']
 
         if (P0-P7)>=5 and (P2-P4)!=0:
-            self.var_dict['packing'] = (P0-P2)/(P2-P4)
+            self.var_dict['packing'] = round(float((P0-P2)/(P2-P4)),1)
         else:
             self.var_dict['packing'] = 0
 
@@ -145,7 +145,7 @@ class webserver():
         dp_tot = self.var_dict['dp_tot']
 
         if dp_tot != 0 and dp_tot > 0 :
-            self.var_dict['inlet_per'] = self.calculate_inlet() / dp_tot
+            self.var_dict['inlet_per'] = round(float(self.calculate_inlet() / dp_tot),1)
         else:
             self.var_dict['inlet_per'] = 0
 
@@ -155,7 +155,7 @@ class webserver():
         dp_tot = self.var_dict['dp_tot']
 
         if dp_tot != 0 and dp_tot > 0 :
-            self.var_dict['bell_per'] = self.calculate_bell()/dp_tot
+            self.var_dict['bell_per'] = round(float(self.calculate_bell()/dp_tot),1)
         else:
             self.var_dict['bell_per'] = 0
         return self.var_dict['bell_per']
@@ -164,7 +164,7 @@ class webserver():
         dp_tot = self.var_dict['dp_tot']
 
         if dp_tot != 0 and dp_tot > 0:
-            self.var_dict['cyclon_per'] = self.calculate_cyclon()/dp_tot
+            self.var_dict['cyclon_per'] = round(float(self.calculate_cyclon()/dp_tot),1)
         else:
             self.var_dict['cyclon_per'] = 0
         return self.var_dict['cyclon_per']
@@ -173,14 +173,14 @@ class webserver():
         P5 = self.var_dict['P5']
         P6 = self.var_dict['P6']
 
-        self.var_dict['cooler_filt1'] = P5 - P6
+        self.var_dict['cooler_filt1'] = round(float(P5 - P6),1)
         return self.var_dict['cooler_filt1']
 
     def calculate_cooler_filt1_per(self):
         dp_tot = self.var_dict['dp_tot']
 
         if dp_tot != 0 and dp_tot > 0:
-            self.var_dict['cooler_filt1_per'] = self.calculate_cooler_filt1()/dp_tot
+            self.var_dict['cooler_filt1_per'] = round(float(self.calculate_cooler_filt1()/dp_tot),1)
         else:
             self.var_dict['cooler_filt1_per'] = 0
         return self.var_dict['cooler_filt1_per']
@@ -189,7 +189,7 @@ class webserver():
         P6 = self.var_dict['P6']
         P7 = self.var_dict['P7']
 
-        self.var_dict['filt2'] = P6-P7
+        self.var_dict['filt2'] = round(float(P6-P7),1)
 
         return self.var_dict['filt2']
 
@@ -197,7 +197,7 @@ class webserver():
         dp_tot = self.var_dict['dp_tot']
 
         if dp_tot != 0 and dp_tot > 0:
-            self.var_dict['filt2_per'] = self.calculate_filt2()/dp_tot
+            self.var_dict['filt2_per'] = round(float(self.calculate_filt2()/dp_tot),1)
         else:
             self.var_dict['filt2_per'] = 0
         return self.var_dict['filt2_per']
@@ -206,7 +206,7 @@ class webserver():
         Qin = self.var_dict['Qin']
 
         if Qin != 0 :
-            self.var_dict['Qout'] = 2,17*Qin
+            self.var_dict['Qout'] = round(float(2.17*Qin),2)
         else :
             self.var_dict['Qout'] = 0
 
