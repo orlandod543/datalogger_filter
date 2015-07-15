@@ -64,9 +64,9 @@ class webserver():
                         self.var_dict[i] = round(float(valor[0]),1) #guardo la variable como un entero en el diccionario
                     else:
                         self.var_dict[i] = int(0) #de lo contrario guardo 0
-                print i , ":", self.var_dict[i]
+                #print i , ":", self.var_dict[i]
 
-        print 'comienzo a calcular'
+        #print 'comienzo a calcular'
         self.calculate_dp_total()
         self.calculate_qin()
         self.calculate_inlet()
