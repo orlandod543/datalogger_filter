@@ -3,12 +3,26 @@ __author__ = 'orlando'
 import re
 import urllib
 import socket
-
+import twitter_alarm
 from math import sqrt
 from time import localtime, strftime
 
 class webserver():
     var_dict={}
+    T3_low_enviado = False
+    T3_high_enviado = False
+    T4_low_enviado = False
+    T4_high_enviado = False
+    T8_low_enviado = False
+    T8_high_enviado = False
+    P0_P7_low_enviado = False
+    P0_P7_med_low_enviado = False
+    P0_P7_med_high_enviado = False
+    P0_P7_high_enviado = False
+    apiKey_tw = 'wwQbSJIMe8R9pT6xgIUcubBje'
+    apiSecret_tw = 'YOPH52doq7TbltkniTOwcEP8KNYirX8qbqdONXuIgKIxEjUNce'
+    accessToken_tw = '3378120419-Lu7iqOnDTOEk4g3YzipgjRCwiLVqVkbhuEapIm0'
+    accessTokenSecret_tw = '0H19jwVd8r5YweA0YDKrNhBDBaPrsF8rStg4tlaYAeicw'
 
     def __init__(self,main_address,variables,timeout):
         self.main_address = main_address #asigno la direccion del servidor
@@ -43,15 +57,16 @@ class webserver():
 
         regex = '\n\n(.+?)\r\n0'
         self.pattern = re.compile(regex,re.MULTILINE)#creo los patrones de busqueda
-
+        self.tw_alarm = twitter_alarm.twitter_alarm(self.apiKey_tw,self.apiSecret_tw,self.accessToken_tw,self.accessTokenSecret_tw) #inicio el servidor de twitter
+        self.tw_alarm.send_message('El datalogger se encuentra funcionando')
 
     def pull(self):
 
 
-        for i in self.variables:
+        for i in self.variables: #itero sobre las variables para obtener los valores
                 url = self.main_address + i + ".html"
                 try:
-                    htmlfile = urllib.urlopen(url)
+                    htmlfile = urllib.urlopen(url) #abro la pagina web y leo la pagina
                     htmltext = htmlfile.read()
                 except IOError:
                     print "no se puede acceder a la pagina"
@@ -83,6 +98,7 @@ class webserver():
         self.calculate_qout()
         self.calculate_ATEX()
 
+        self.alarmas()
         return self.var_dict
 
     def calculate_dp_total(self): #en este metodo calculo la variable dp total
@@ -225,7 +241,6 @@ class webserver():
 
     def pull_datastring(self): #esta funcion hace un pull del webserver y saca de una vez el string de datos
         date = strftime("%H:%M:%S", localtime()) #obtengo la hora del momento de la toma de muestras
-        print date
         self.pull()
         datastr = date + ","
 
@@ -234,7 +249,100 @@ class webserver():
             if not self.variables_calc[len(self.variables_calc) - 1] == i:  #si no es la ultima variable arreglo una coma
                 datastr += ","
         datastr += "\n"
+        print datastr
         return datastr
+
+    def alarmas(self): #esta funcion es la que levanta las banderas de las alarmas y envia los mensajes a twitter
+        #defino los threshold
+        T3_high = 1100
+        T3_low = 800
+        T4_high =500
+        T4_low  = 400
+        T8_high = 170
+        P0_P7_high = 100
+        P0_P7_medium = 60
+        P0_P7_low = 40
+
+        #analizo las alarmas de T3
+        T3 = self.var_dict['T3']
+
+        if T3 < T3_high and T3 > T3_low: #Si el valor se encuntra dentro de de esos rangos
+            #reseteo las banderas
+            self.T3_high_enviado = False
+            self.T3_low_enviado = False
+        else:
+            if T3 > T3_high and self.T3_high_enviado == False:
+                self.tw_alarm.send_message('T3 se encuentra por encima de '+str(T3_high)+'. T3='+str(T3))
+                self.T3_high_enviado =True
+            if T3 < T3_low and self.T3_low_enviado == False:
+                self.tw_alarm.send_message('T3 se encuentra por debajo de ' + str(T3_low)+ '. T3='+str(T3))
+                self.T3_low_enviado = True
+
+        #analizo las alarmas de T4
+        T4 = self.var_dict['T4']
+
+        if T4 < T4_high and T4 > T4_low: #Si el valor se encuntra dentro de de esos rangos
+            #reseteo las banderas
+            self.T4_high_enviado = False
+            self.T4_low_enviado = False
+        else:
+            if T4 > T4_high and self.T4_high_enviado == False:
+                self.tw_alarm.send_message('T4 se encuentra por encima de '+str(T4_high) +'. T4='+ str(T4))
+                self.T4_high_enviado =True
+            if T4 < T4_low and self.T4_low_enviado == False:
+                self.tw_alarm.send_message('T4 se encuentra por debajo de ' +str(T4_low) +'. T4=' + str(T4))
+                self.T4_low_enviado = True
+
+        #analizo las alarmas de T8
+        T8 = self.var_dict['T8']
+
+        if T8 < T8_high and self.T8_low_enviado == False: #Si el valor se encuntra por debajo del limite
+            self.tw_alarm.send_message('T8 se encuentra por debajo de ' +str(T8_high) + '. T8=' + str(T8))
+            self.T8_low_enviado = True
+            self.T8_high_enviado = False
+        if T8 > T8_high and self.T8_high_enviado == False:
+            self.tw_alarm.send_message('T8 se encuentra por encima de ' +str(T8_high) + '. T8=' + str(T8))
+            self.T8_high_enviado = True
+            self.T8_low_enviado = False
+
+        #analizo las alarmas de P0-P7
+        P0_P7 = round(float(abs(self.var_dict['P0']-self.var_dict['P7'])),1)
+
+        if P0_P7 <P0_P7_low and self.P0_P7_low_enviado == False: #si P0-P7 esta por debajo del valor minimo
+            self.tw_alarm.send_message('P0-P7 se encuentra por debajo de ' + str(P0_P7_low) + '. P0-P7=' + str(P0_P7))
+            self.P0_P7_low_enviado = True
+            self.P0_P7_high_enviado = False
+            self.P0_P7_med_low_enviado = False
+            self.P0_P7_med_high_enviado = False
+
+        if P0_P7 > P0_P7_high and self.P0_P7_high_enviado == False: #si P0-P7 esta por encima del valor maximo
+            self.tw_alarm.send_message('P0-P7 se encuentra por encima de ' + str(P0_P7_high) + '. P0-P7=' + str(P0_P7))
+            self.P0_P7_high_enviado = True
+            self.P0_P7_low_enviado = False
+            self.P0_P7_med_low_enviado = False
+            self.P0_P7_med_high_enviado = False
+
+        if P0_P7 > P0_P7_low and P0_P7 < P0_P7_high:
+            if P0_P7 < P0_P7_medium and self.P0_P7_med_low_enviado == False:
+                self.tw_alarm.send_message('P0-P7 es mayor que ' + str(P0_P7_low) + ' Y esta por debajo de ' + str(P0_P7_medium) + '. P0-P7=' + str(P0_P7))
+                self.P0_P7_med_low_enviado = True
+                self.P0_P7_med_high_enviado = False
+                self.P0_P7_high_enviado == False
+                self.P0_P7_low_enviado == False
+            if P0_P7 > P0_P7_medium and self.P0_P7_med_high_enviado == False:
+                self.tw_alarm.send_message('P0-P7 es mayor que ' + str(P0_P7_low) + ' Y esta por encima de ' + str(P0_P7_medium) + '. P0-P7=' + str(P0_P7))
+                self.P0_P7_med_high_enviado = True
+                self.P0_P7_med_low_enviado = False
+                self.P0_P7_high_enviado == False
+                self.P0_P7_low_enviado == False
+
+
+
+            #comienzo a revisar las variables
+
+
+            #comenzamos a analizar las condiciones de las banderas
+
 
 
 

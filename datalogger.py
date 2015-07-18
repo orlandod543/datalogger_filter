@@ -3,6 +3,7 @@ import time
 import dropbox_log
 import webserver_pull
 import pendrive
+import twitter_alarm
 from time import localtime, strftime
 time_sample = 30 # defino el tiempo de muestreo en seegundos
 time_upload_db = 3600 #defino el tiempo de subida a dropbox en segundos tambien
@@ -11,6 +12,7 @@ app_key = 'esipcaghf8ayg6m'
 app_secret = '66hyaeakvpzrrxc'
 access_token = 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT'
 access_token_pd = 'oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D'
+
 
 #pendrivepath = '/home/orlando/dataloggerweb/'
 pendrivepath = "/media/pendrive/"
@@ -34,7 +36,6 @@ else:
     
     for i in variables:
         var_dict[i] = int(0) #inicializo el diccionario en cero todo
-    print var_dict
 
     webserver=webserver_pull.webserver(url,variables,2) #inicio el objeto webserver
 
@@ -45,7 +46,6 @@ else:
     dropbox_pd = dropbox_log.dropbox_log(access_token_pd,db_folder) #inicio el dropbox de pulse dynamics
 
 
-
     pull = True #esta variable me indica cuando debo de hacer un pull de datos
     db_counter = 0
     start_time = time.time()
@@ -54,7 +54,7 @@ else:
 
 
     while True:
-        print 'han pasado exactamente tantos ' + str(time.time()-start_time) + ' desde el ultimo muestreo'
+        #print 'han pasado exactamente tantos ' + str(time.time()-start_time) + ' desde el ultimo muestreo'
         start_time = time.time()
 
         #Esta es la parte que obtiene los datos del servidos
