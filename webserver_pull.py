@@ -318,7 +318,7 @@ class webserver():
         #analizo las alarmas de P0-P7
         P0_P7 = round(float(abs(self.var_dict['P0']-self.var_dict['P7'])),1)
 
-        if P0_P7 <P0_P7_low and self.P0_P7_low_enviado == False: #si P0-P7 esta por debajo del valor minimo
+        if P0_P7 <P0_P7_low and P0_P7 > 10 and self.P0_P7_low_enviado == False: #si P0-P7 esta por debajo del valor minimo
             self.tw_alarm.send_message('P0-P7 se encuentra por debajo de ' + str(P0_P7_low) + '. P0-P7=' + str(P0_P7))
             self.P0_P7_low_enviado = True
             self.P0_P7_high_enviado = False
