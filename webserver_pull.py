@@ -10,8 +10,10 @@ from time import localtime, strftime
 class webserver():
     var_dict={}
     T3_low_enviado = False
+    T3_medium_enviado = False
     T3_high_enviado = False
     T4_low_enviado = False
+    T4_medium_enviado = False
     T4_high_enviado = False
     T8_low_enviado = False
     T8_high_enviado = False
@@ -266,32 +268,40 @@ class webserver():
         #analizo las alarmas de T3
         T3 = self.var_dict['T3']
 
+        if T3 > T3_high and self.T3_high_enviado == False:
+            self.tw_alarm.send_message('T3 se encuentra por encima de '+str(T3_high)+'. T3='+str(T3))
+            self.T3_high_enviado =True
+            self.T3_low_enviado = False
+            self.T3_medium_enviado = False
+        if T3 < T3_low and self.T3_low_enviado == False:
+            self.tw_alarm.send_message('T3 se encuentra por debajo de ' + str(T3_low)+ '. T3='+str(T3))
+            self.T3_low_enviado = True
+            self.T3_high_enviado = False
+            self.T3_medium_enviado = False
         if T3 < T3_high and T3 > T3_low: #Si el valor se encuntra dentro de de esos rangos
-            #reseteo las banderas
+            self.tw_alarm.send_message(('T3 se encuentre entre ' + str(T3_low) + ' y ' + str(T3_high)) + '. T3=' + str(T3))
+            self.T3_medium_enviado = True
             self.T3_high_enviado = False
             self.T3_low_enviado = False
-        else:
-            if T3 > T3_high and self.T3_high_enviado == False:
-                self.tw_alarm.send_message('T3 se encuentra por encima de '+str(T3_high)+'. T3='+str(T3))
-                self.T3_high_enviado =True
-            if T3 < T3_low and self.T3_low_enviado == False:
-                self.tw_alarm.send_message('T3 se encuentra por debajo de ' + str(T3_low)+ '. T3='+str(T3))
-                self.T3_low_enviado = True
 
         #analizo las alarmas de T4
         T4 = self.var_dict['T4']
 
+        if T4 > T4_high and self.T4_high_enviado == False:
+            self.tw_alarm.send_message('T4 se encuentra por encima de '+str(T4_high)+'. T4='+str(T4))
+            self.T4_high_enviado =True
+            self.T4_low_enviado = False
+            self.T4_medium_enviado = False
+        if T4 < T4_low and self.T4_low_enviado == False:
+            self.tw_alarm.send_message('T4 se encuentra por debajo de ' + str(T4_low)+ '. T4='+str(T4))
+            self.T4_low_enviado = True
+            self.T4_high_enviado = False
+            self.T4_medium_enviado = False
         if T4 < T4_high and T4 > T4_low: #Si el valor se encuntra dentro de de esos rangos
-            #reseteo las banderas
+            self.tw_alarm.send_message(('T4 se encuentre entre ' + str(T4_low) + ' y ' + str(T4_high)) + '. T4=' + str(T4))
+            self.T4_medium_enviado = True
             self.T4_high_enviado = False
             self.T4_low_enviado = False
-        else:
-            if T4 > T4_high and self.T4_high_enviado == False:
-                self.tw_alarm.send_message('T4 se encuentra por encima de '+str(T4_high) +'. T4='+ str(T4))
-                self.T4_high_enviado =True
-            if T4 < T4_low and self.T4_low_enviado == False:
-                self.tw_alarm.send_message('T4 se encuentra por debajo de ' +str(T4_low) +'. T4=' + str(T4))
-                self.T4_low_enviado = True
 
         #analizo las alarmas de T8
         T8 = self.var_dict['T8']
@@ -335,7 +345,9 @@ class webserver():
                 self.P0_P7_med_low_enviado = False
                 self.P0_P7_high_enviado == False
                 self.P0_P7_low_enviado == False
-
+    def valor(self, valor):
+        print self.var_dict[valor]
+        return self.var_dict[valor]
 
 
             #comienzo a revisar las variables
@@ -356,7 +368,10 @@ class webserver():
 if __name__ == "__main__":
     var = ['T1','T3','T4','T8','T12','T13','T14','P0','P2','P4','P5','P6','P7','O1','O2']
     p=webserver("http://46.229.95.116/awp/PulseDynamics/IO/IO_",var,2)
-    print p.pull_datastring()
+    p.pull_datastring()
+
+
+
 
 
 
