@@ -278,7 +278,7 @@ class webserver():
             self.T3_low_enviado = True
             self.T3_high_enviado = False
             self.T3_medium_enviado = False
-        if T3 < T3_high and T3 > T3_low: #Si el valor se encuntra dentro de de esos rangos
+        if T3 < T3_high and T3 > T3_low and self.T3_medium_enviado == False: #Si el valor se encuntra dentro de de esos rangos
             self.tw_alarm.send_message(('T3 se encuentre entre ' + str(T3_low) + ' y ' + str(T3_high)) + '. T3=' + str(T3))
             self.T3_medium_enviado = True
             self.T3_high_enviado = False
