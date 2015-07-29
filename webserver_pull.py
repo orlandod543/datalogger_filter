@@ -267,84 +267,84 @@ class webserver():
 
         #analizo las alarmas de T3
         T3 = self.var_dict['T3']
-
-        if T3 > T3_high and self.T3_high_enviado == False:
-            self.tw_alarm.send_message('T3 se encuentra por encima de '+str(T3_high)+'. T3='+str(T3))
-            self.T3_high_enviado =True
-            self.T3_low_enviado = False
-            self.T3_medium_enviado = False
-        if T3 < T3_low and self.T3_low_enviado == False:
-            self.tw_alarm.send_message('T3 se encuentra por debajo de ' + str(T3_low)+ '. T3='+str(T3))
-            self.T3_low_enviado = True
-            self.T3_high_enviado = False
-            self.T3_medium_enviado = False
-        if T3 < T3_high and T3 > T3_low and self.T3_medium_enviado == False: #Si el valor se encuntra dentro de de esos rangos
-            self.tw_alarm.send_message(('T3 se encuentre entre ' + str(T3_low) + ' y ' + str(T3_high)) + '. T3=' + str(T3))
-            self.T3_medium_enviado = True
-            self.T3_high_enviado = False
-            self.T3_low_enviado = False
+        if T3 != -1:
+            if T3 > T3_high and self.T3_high_enviado == False:
+                self.tw_alarm.send_message('T3='+str(T3))
+                self.T3_high_enviado =True
+                self.T3_low_enviado = False
+                self.T3_medium_enviado = False
+            if T3 < T3_low and self.T3_low_enviado == False:
+                self.tw_alarm.send_message('T3='+str(T3))
+                self.T3_low_enviado = True
+                self.T3_high_enviado = False
+                self.T3_medium_enviado = False
+            if T3 < T3_high and T3 > T3_low and self.T3_medium_enviado == False: #Si el valor se encuntra dentro de de esos rangos
+                self.tw_alarm.send_message('T3=' + str(T3))
+                self.T3_medium_enviado = True
+                self.T3_high_enviado = False
+                self.T3_low_enviado = False
 
         #analizo las alarmas de T4
         T4 = self.var_dict['T4']
-
-        if T4 > T4_high and self.T4_high_enviado == False:
-            self.tw_alarm.send_message('T4 se encuentra por encima de '+str(T4_high)+'. T4='+str(T4))
-            self.T4_high_enviado =True
-            self.T4_low_enviado = False
-            self.T4_medium_enviado = False
-        if T4 < T4_low and self.T4_low_enviado == False:
-            self.tw_alarm.send_message('T4 se encuentra por debajo de ' + str(T4_low)+ '. T4='+str(T4))
-            self.T4_low_enviado = True
-            self.T4_high_enviado = False
-            self.T4_medium_enviado = False
-        if T4 < T4_high and T4 > T4_low and self.T4_medium_enviado == False: #Si el valor se encuntra dentro de de esos rangos
-            self.tw_alarm.send_message(('T4 se encuentre entre ' + str(T4_low) + ' y ' + str(T4_high)) + '. T4=' + str(T4))
-            self.T4_medium_enviado = True
-            self.T4_high_enviado = False
-            self.T4_low_enviado = False
+        if T4 != -1:
+            if T4 > T4_high and self.T4_high_enviado == False:
+                self.tw_alarm.send_message('T4='+str(T4))
+                self.T4_high_enviado =True
+                self.T4_low_enviado = False
+                self.T4_medium_enviado = False
+            if T4 < T4_low and self.T4_low_enviado == False:
+                self.tw_alarm.send_message('T4='+str(T4))
+                self.T4_low_enviado = True
+                self.T4_high_enviado = False
+                self.T4_medium_enviado = False
+            if T4 < T4_high and T4 > T4_low and self.T4_medium_enviado == False: #Si el valor se encuntra dentro de de esos rangos
+                self.tw_alarm.send_message('T4=' + str(T4))
+                self.T4_medium_enviado = True
+                self.T4_high_enviado = False
+                self.T4_low_enviado = False
 
         #analizo las alarmas de T8
         T8 = self.var_dict['T8']
-
-        if T8 < T8_high and self.T8_low_enviado == False: #Si el valor se encuntra por debajo del limite
-            self.tw_alarm.send_message('T8 se encuentra por debajo de ' +str(T8_high) + '. T8=' + str(T8))
-            self.T8_low_enviado = True
-            self.T8_high_enviado = False
-        if T8 > T8_high and self.T8_high_enviado == False:
-            self.tw_alarm.send_message('T8 se encuentra por encima de ' +str(T8_high) + '. T8=' + str(T8))
-            self.T8_high_enviado = True
-            self.T8_low_enviado = False
+        if T8 != -1:
+            if T8 < T8_high and self.T8_low_enviado == False: #Si el valor se encuntra por debajo del limite
+                self.tw_alarm.send_message('T8=' + str(T8))
+                self.T8_low_enviado = True
+                self.T8_high_enviado = False
+            if T8 > T8_high and self.T8_high_enviado == False:
+                self.tw_alarm.send_message('T8=' + str(T8))
+                self.T8_high_enviado = True
+                self.T8_low_enviado = False
 
         #analizo las alarmas de P0-P7
         P0_P7 = round(float(abs(self.var_dict['P0']-self.var_dict['P7'])),1)
-
-        if P0_P7 <P0_P7_low and P0_P7 > 10 and self.P0_P7_low_enviado == False: #si P0-P7 esta por debajo del valor minimo
-            self.tw_alarm.send_message('P0-P7 se encuentra por debajo de ' + str(P0_P7_low) + '. P0-P7=' + str(P0_P7))
-            self.P0_P7_low_enviado = True
-            self.P0_P7_high_enviado = False
-            self.P0_P7_med_low_enviado = False
-            self.P0_P7_med_high_enviado = False
-
-        if P0_P7 > P0_P7_high and self.P0_P7_high_enviado == False: #si P0-P7 esta por encima del valor maximo
-            self.tw_alarm.send_message('P0-P7 se encuentra por encima de ' + str(P0_P7_high) + '. P0-P7=' + str(P0_P7))
-            self.P0_P7_high_enviado = True
-            self.P0_P7_low_enviado = False
-            self.P0_P7_med_low_enviado = False
-            self.P0_P7_med_high_enviado = False
-
-        if P0_P7 > P0_P7_low and P0_P7 < P0_P7_high:
-            if P0_P7 < P0_P7_medium and self.P0_P7_med_low_enviado == False:
-                self.tw_alarm.send_message('P0-P7 es mayor que ' + str(P0_P7_low) + ' Y esta por debajo de ' + str(P0_P7_medium) + '. P0-P7=' + str(P0_P7))
-                self.P0_P7_med_low_enviado = True
-                self.P0_P7_med_high_enviado = False
-                self.P0_P7_high_enviado == False
-                self.P0_P7_low_enviado == False
-            if P0_P7 > P0_P7_medium and self.P0_P7_med_high_enviado == False:
-                self.tw_alarm.send_message('P0-P7 es mayor que ' + str(P0_P7_low) + ' Y esta por encima de ' + str(P0_P7_medium) + '. P0-P7=' + str(P0_P7))
-                self.P0_P7_med_high_enviado = True
+        if float(self.var_dict['P0']) != -1 and float(self.var_dict['P7']) != -1:
+            if P0_P7 <P0_P7_low and P0_P7 > 10 and self.P0_P7_low_enviado == False: #si P0-P7 esta por debajo del valor minimo
+                self.tw_alarm.send_message('P0-P7=' + str(P0_P7))
+                self.P0_P7_low_enviado = True
+                self.P0_P7_high_enviado = False
                 self.P0_P7_med_low_enviado = False
-                self.P0_P7_high_enviado == False
-                self.P0_P7_low_enviado == False
+                self.P0_P7_med_high_enviado = False
+
+            if P0_P7 > P0_P7_high and self.P0_P7_high_enviado == False: #si P0-P7 esta por encima del valor maximo
+                self.tw_alarm.send_message('P0-P7=' + str(P0_P7))
+                self.P0_P7_high_enviado = True
+                self.P0_P7_low_enviado = False
+                self.P0_P7_med_low_enviado = False
+                self.P0_P7_med_high_enviado = False
+
+            if P0_P7 > P0_P7_low and P0_P7 < P0_P7_high:
+                if P0_P7 < P0_P7_medium and self.P0_P7_med_low_enviado == False:
+                    self.tw_alarm.send_message('P0-P7=' + str(P0_P7))
+                    self.P0_P7_med_low_enviado = True
+                    self.P0_P7_med_high_enviado = False
+                    self.P0_P7_high_enviado == False
+                    self.P0_P7_low_enviado == False
+                if P0_P7 > P0_P7_medium and self.P0_P7_med_high_enviado == False:
+                    self.tw_alarm.send_message('P0-P7=' + str(P0_P7))
+                    self.P0_P7_med_high_enviado = True
+                    self.P0_P7_med_low_enviado = False
+                    self.P0_P7_high_enviado == False
+                    self.P0_P7_low_enviado == False
     def valor(self, valor):
         print self.var_dict[valor]
         return self.var_dict[valor]
