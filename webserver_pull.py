@@ -76,7 +76,7 @@ class webserver():
                 else:
                     #print i
                     valor = re.findall(self.pattern,htmltext) #busco el valor de acuerdo al patron dado
-                    if not valor[0] == []:#si el valor no es vacio(osea encontro un match)
+                    if valor: #si el valor no es vacio(osea encontro un match)
                     #    print valor[0]
                         self.var_dict[i] = round(float(valor[0]),1) #guardo la variable como un entero en el diccionario
                     else:
@@ -267,7 +267,7 @@ class webserver():
 
         #analizo las alarmas de T3
         T3 = self.var_dict['T3']
-        if T3 != -1:
+        if T3 > -1:
             if T3 > T3_high and self.T3_high_enviado == False:
                 self.tw_alarm.send_message('T3='+str(T3))
                 self.T3_high_enviado =True
@@ -286,7 +286,7 @@ class webserver():
 
         #analizo las alarmas de T4
         T4 = self.var_dict['T4']
-        if T4 != -1:
+        if T4 > -1:
             if T4 > T4_high and self.T4_high_enviado == False:
                 self.tw_alarm.send_message('T4='+str(T4))
                 self.T4_high_enviado =True
@@ -305,7 +305,7 @@ class webserver():
 
         #analizo las alarmas de T8
         T8 = self.var_dict['T8']
-        if T8 != -1:
+        if T8 > -1:
             if T8 < T8_high and self.T8_low_enviado == False: #Si el valor se encuntra por debajo del limite
                 self.tw_alarm.send_message('T8=' + str(T8))
                 self.T8_low_enviado = True
@@ -317,7 +317,7 @@ class webserver():
 
         #analizo las alarmas de P0-P7
         P0_P7 = round(float(abs(self.var_dict['P0']-self.var_dict['P7'])),1)
-        if float(self.var_dict['P0']) != -1 and float(self.var_dict['P7']) != -1:
+        if float(self.var_dict['P0']) > -1 and float(self.var_dict['P7']) > -1:
             if P0_P7 <P0_P7_low and P0_P7 > 10 and self.P0_P7_low_enviado == False: #si P0-P7 esta por debajo del valor minimo
                 self.tw_alarm.send_message('P0-P7=' + str(P0_P7))
                 self.P0_P7_low_enviado = True

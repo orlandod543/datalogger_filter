@@ -14,8 +14,8 @@ access_token = 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT
 access_token_pd = 'oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D'
 
 
-#pendrivepath = '/home/orlando/dataloggerweb/'
-pendrivepath = "/media/pendrive/"
+pendrivepath = '/home/orlando/dataloggerweb/'
+#pendrivepath = "/media/pendrive/"
 db_folder = "/mnt/sda1/"
 
 url = "http://46.229.95.116/awp/PulseDynamics/IO/IO_"
