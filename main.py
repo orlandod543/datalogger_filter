@@ -12,10 +12,14 @@
 import filter
 
 #Define filter serial port parameters
-port = "/dev/ttyACM0"
+port = "/dev/ttyACM1"
 baudrate = 9600
 
 #create a filter object
-f = filter.air_filter(port, baudrate)
+f = filter.air_filter(port, baudrate, timeout=10)
 print f.air_filter_start()
-print f.get_data()
+print f.get_name()
+for i in range (0,10):
+    print f.get_data()
+
+print f.filter_close()

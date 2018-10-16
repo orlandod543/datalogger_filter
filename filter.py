@@ -3,7 +3,7 @@ __author__ = "Orlando"
 #the input is the serial com where the filter is connectedself.
 
 import serial #Pyserial module to control the serial port
-
+import re
 class air_filter(serial.Serial):
     def __init__(self, port, baudrate = 9600, stopbits = serial.STOPBITS_ONE,
     timeout = 2, bytesize = serial.EIGHTBITS):
@@ -20,16 +20,47 @@ class air_filter(serial.Serial):
         self.bytesize = bytesize
 
     def air_filter_start(self):
-        """Start the air filter serial port. Returns true if its open"""
+        """
+        Start the air filter serial port. Returns true if its open
+        """
         self.open()
         return self.is_open
 
     def get_data(self):
-        return self.is_open
+        """
+        reads a line of data, then extract the two variables and return the
+        two variables
+        returns 0.0 0.0 if there is an error.
+        """
+        line = self.readline() #read one line of data
+        m = re.match(r'(.*)          (.*)', line) #extract data according to the pattern
+        try:
+            ratio = float(m.group(1))
+            concentration = float(m.group(2))
+        except(AttributeError,ValueError):
+            ratio = 0.0
+            concentration = 0.0
 
-    def get_serial_params(self):
+        return (ratio, concentration)
+
+
+    def get_timeout(self):
+        """
+        Returns the timeout parameter of the filter
+        """
         #Return serial parameters of the air filter
-        return self.baudrate
+        return self.timeout
+
 
     def get_name(self):
+        """
+        Returns the port name used
+        """
         return self.name
+
+    def filter_close(self):
+        """
+        Close the filter port
+        """
+        self.close()
+        return not self.is_open
