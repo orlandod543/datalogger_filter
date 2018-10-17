@@ -28,8 +28,8 @@ class air_filter(serial.Serial):
 
     def get_data(self):
         """
-        reads a line of data, then extract the two variables and return the
-        two variables
+        reads a line of data, then extract the two variables and return a list
+        with the two variables
         returns 0.0 0.0 if there is an error.
         """
         line = self.readline() #read one line of data
@@ -41,7 +41,7 @@ class air_filter(serial.Serial):
             ratio = 0.0
             concentration = 0.0
 
-        return (ratio, concentration)
+        return [ratio, concentration]
 
 
     def get_timeout(self):
