@@ -12,12 +12,10 @@ class pendrive():
         try:
             with open(self.filepath+filename,"a") as file_descriptor:
                 file_descriptor.write(data)
-                print data
                 file_descriptor.close()
-                print 'se ha grabado la informacion en' + self.filepath + filename
             return 0
         except IOError:
-            print ' no se puede escribir en el archivo'
+            print 'Error writing the data'
             return -1
 
     def create_file_header(self,filename,header):
