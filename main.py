@@ -14,6 +14,8 @@ import dropbox
 import os
 import exceptions
 from dropbox.files import WriteMode
+import dropbox.exceptions as DropboxErrors
+import requests.exceptions as HTTPRequestsErrors
 import serial.tools.list_ports
 
 """function section"""
@@ -62,6 +64,7 @@ baudrate = 9600
 datalog_path = "data/"
 PD_db_access_token = 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT'
 PD_db_folder = "/mnt/sda1/"
+dropbox_user_agent = "Filter"
 file_header = "YY-MM-DD-HH:MM:SS Ratio[%] Concentration[pcs/L]\n"
 
 
@@ -69,11 +72,25 @@ file_header = "YY-MM-DD-HH:MM:SS Ratio[%] Concentration[pcs/L]\n"
 #create and initialize the filter object
 f = filter.air_filter(port, baudrate, timeout=10)
 f.air_filter_start()
-#create an object pendrive. ToDo. Refactorize and fix this class.
-p = pendrive.pendrive(datalog_path)
-PD_dropbox = dropbox.Dropbox(PD_db_access_token)
-#print PD_dropbox.users_get_current_account()
 
+p = pendrive.pendrive(datalog_path)
+print "attempting to connect to Dropbox"
+PD_dropbox = dropbox.Dropbox(PD_db_access_token,
+                            max_retries_on_error = 4,
+                            max_retries_on_rate_limit = 4,
+                            user_agent = dropbox_user_agent,
+                            session = None,
+                            headers = None,
+                            timeout = 30)
+#Try to establish a connection with the dropbox account
+try:
+    PD_dropbox.users_get_current_account()
+except DropboxErrors.AuthError:
+    print "Authentication access token is wrong"
+    pass
+except HTTPRequestsErrors.ConnectionError:
+    print "HTTP error"
+    pass
 """From this point the program start"""
 
 
@@ -94,12 +111,16 @@ try:
         #Upload data onto dropbox
         file = open(datalog_path+filename,"r")#open file to upload
         contents = file.read()
-        PD_dropbox.files_upload(contents,
-        PD_db_folder+filename,
-        mode = WriteMode('overwrite'))
+        try:
+            PD_dropbox.files_upload(contents,
+                                    PD_db_folder+filename,
+                                    mode = WriteMode('overwrite'))
+        except HTTPRequestsErrors.ConnectionError:
+            print "HTTP error. No data uploaded"
+            pass                       #so it is catched here.
         file.close()
-
         print data
+
 except KeyboardInterrupt: #Clean the code if the program is keyboard interrupted
     print f.filter_close()
     sys.exit(0)
