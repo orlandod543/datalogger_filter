@@ -22,8 +22,11 @@ class air_filter(serial.Serial):
     def air_filter_start(self):
         """
         Start the air filter serial port. Returns true if its open
-        """
+        Input: None
+        Outuput bool
+        """:
         self.open()
+        self.reset_input_buffer()
         return self.is_open
 
     def get_data(self):
@@ -31,6 +34,8 @@ class air_filter(serial.Serial):
         reads a line of data, then extract the two variables and return a list
         with the two variables
         returns 0.0 0.0 if there is an error.
+        Input: None
+        Output:[Value1, Value2]
         """
         line = self.readline() #read one line of data
         m = re.match(r'(.*)          (.*)', line) #extract data according to the pattern

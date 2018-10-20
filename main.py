@@ -69,8 +69,6 @@ file_header = "YY-MM-DD-HH:MM:SS Ratio[%] Concentration[pcs/L]\n"
 #create and initialize the filter object
 f = filter.air_filter(port, baudrate, timeout=10)
 f.air_filter_start()
-f.reset_input_buffer()
-f.flushInput()
 #create an object pendrive. ToDo. Refactorize and fix this class.
 p = pendrive.pendrive(datalog_path)
 PD_dropbox = dropbox.Dropbox(PD_db_access_token)
@@ -104,4 +102,4 @@ try:
         print data
 except KeyboardInterrupt: #Clean the code if the program is keyboard interrupted
     print f.filter_close()
-    sys.exit()
+    sys.exit(0)
