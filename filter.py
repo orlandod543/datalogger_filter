@@ -24,7 +24,7 @@ class air_filter(serial.Serial):
         Start the air filter serial port. Returns true if its open
         Input: None
         Outuput bool
-        """:
+        """
         self.open()
         self.reset_input_buffer()
         return self.is_open
