@@ -4,7 +4,7 @@
 #it time stamp it, load to a txt file with the name of the current date
 #and it will upload the file to dropbox
 #The example string is as follows:
-#-> radio = $i          Concentration = 0
+#-> RAtio = $i          Concentration = 0
 #import section. Define here all clases to use
 import filter
 from time import localtime, strftime
@@ -34,7 +34,7 @@ baudrate = 9600
 datalog_path = "data/"
 PD_db_access_token = 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT'
 PD_db_folder = "/mnt/sda1/"
-
+file_header = "YY-MM-DD-HH:MM:SS Ratio[%] Concentration[pcs/L]\n"
 
 
 """Setup section. Define here all the objects to use and configure them."""
@@ -57,11 +57,13 @@ try:
         data = collect_filter_data(f) #collect data logger data
         filename = data[0][:8]+'.txt' #set the name of the file by the data
 
+        #For new files, the file header is writen at the beginning.
+        #then the data is appended onto the file
         if not p.file_exists(filename):
             print "Creating file " + str(filename)
-        #map function applies str() to convert strings from float to the list
-        #of data.
+            p.create_file_header(filename,file_header)
         p.write_append(filename,' '.join(map(str,data))+"\n")
+
         #Upload data onto dropbox
         file = open(datalog_path+filename,"r")#open file to upload
         contents = file.read()

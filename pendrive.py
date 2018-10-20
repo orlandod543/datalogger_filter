@@ -9,43 +9,43 @@ class pendrive():
         self.filepath = filepath
 
     def write_append(self,filename,data):
+        """
+        method that append a string to a file
+        If there is an error, catches it and does nothing
+        Input: str filename, str data
+        Output: None
+        """
         try:
             with open(self.filepath+filename,"a") as file_descriptor:
                 file_descriptor.write(data)
                 file_descriptor.close()
-            return 0
         except IOError:
-            print 'Error writing the data'
-            return -1
+            pass
+        return None
 
     def create_file_header(self,filename,header):
-        if os.path.isfile(self.filepath+filename) == False: #pregunto si el archivo existe
-            print "creando el archivo nuevo"
-
+        """
+        Creates the file header.
+        Raises IOError if it fails
+        Input: str filename, str header
+        Output: None
+        """
         try:
             with open(self.filepath+filename,'w') as file_descriptor:
                 file_descriptor.write(header) #escribo el header en el archivo
                 file_descriptor.close()
-
         except IOError:
-           print " No se puede abrir el archivo"
-
-    def abrir_apuntador_archivo(self,filename):
-        try:
-            with open(self.filepath+filename,"rb") as file_descriptor:
-                return file_descriptor
-
-        except IOError:
-            return -1
-
-    def cerrar_apuntador_archivo(self,file_descriptor):
-        file_descriptor.close
+           pass
+        return None
 
 
     def file_exists(self,filename):
+        """
+        Check if filename file_exists
+        Input: str filename
+        Output: bool
+        """
         return os.path.isfile(self.filepath+filename) #pregunto si el archivo existe
-
-
 
     def address(self):
         return self.filepath
