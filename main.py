@@ -29,20 +29,20 @@ def collect_filter_data(f):
     data.insert(0,strtime) #append the time to the data
     return data
 
-def port_selector():
+def retrieveArduinoCOMport():
     """
     Function that query the ports available on the system and picks the one
     where the Arduino is connected.
-    If there is more than one Arduino, return the first one
+    If there is more than one Arduino, return the first one,
+    If there is no arduino return empty string.
     Input: None
     Output: str COM port.
     """
     comports =  serial.tools.list_ports.comports()
     port_to_use = [comport.device for comport in comports if
                     "Arduino" in comport.manufacturer]
-    if not port_to_use: #If there is no arduino connected it raises an error
-        raise IOError
-        return None
+    if not port_to_use: #If there
+        return ""
     else:
         return port_to_use[0]
 
@@ -50,12 +50,13 @@ def port_selector():
 """Configuration section. Define here global variables or settings"""
 #Check if there is an arduino connected. If there is no, it stops
 #the software
-try:
-    port = port_selector()
-    print "Found Arduino on port"+ str(port)
-except IOError:
+port = retrieveArduinoCOMport()
+if not port:
     print "There is no Arduino available"
     sys.exit(1)
+else:
+    print "Found Arduino on port"+ str(port)
+
 
 baudrate = 9600
 datalog_path = "data/"
