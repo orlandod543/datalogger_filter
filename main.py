@@ -12,13 +12,15 @@ import sys, traceback
 import pendrive
 import dropbox
 import os
+import exceptions
 from dropbox.files import WriteMode
+import serial.tools.list_ports
 
 """function section"""
 def collect_filter_data(f):
     """
     Function that collects data from the file and add the timestamp
-    Input: None
+    Input: filter.air_filter object
     Output: list data (str time, float data1, float data2)
     """
     #get and timestamp the data
@@ -27,9 +29,35 @@ def collect_filter_data(f):
     data.insert(0,strtime) #append the time to the data
     return data
 
+def retrieveArduinoCOMport():
+    """
+    Function that query the ports available on the system and picks the one
+    where the Arduino is connected.
+    If there is more than one Arduino, return the first one,
+    If there is no arduino return empty string.
+    Input: None
+    Output: str COM port.
+    """
+    comports =  serial.tools.list_ports.comports()
+    port_to_use = [comport.device for comport in comports if
+                    "Arduino" in comport.manufacturer]
+    if not port_to_use: #If there
+        return ""
+    else:
+        return port_to_use[0]
+
+
 """Configuration section. Define here global variables or settings"""
-#Define filter serial port parameters
-port = "/dev/ttyACM0"
+#Check if there is an arduino connected. If there is no, it stops
+#the software
+port = retrieveArduinoCOMport()
+if not port:
+    print "There is no Arduino available"
+    sys.exit(1)
+else:
+    print "Found Arduino on port"+ str(port)
+
+
 baudrate = 9600
 datalog_path = "data/"
 PD_db_access_token = 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT'
@@ -46,9 +74,10 @@ f.flushInput()
 #create an object pendrive. ToDo. Refactorize and fix this class.
 p = pendrive.pendrive(datalog_path)
 PD_dropbox = dropbox.Dropbox(PD_db_access_token)
-print PD_dropbox.users_get_current_account()
+#print PD_dropbox.users_get_current_account()
 
 """From this point the program start"""
+
 
 #The filter waits until a line of data arrives to the serial port and timestamp it
 try:
