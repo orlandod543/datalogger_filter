@@ -52,7 +52,7 @@ def RetrieveARduinoCOMport():
 """Configuration section. Define here global variables or settings"""
 #Check if there is an arduino connected. If there is no, it stops
 #the software
-print "-----Filter datalogger-----"
+print "-----Dust Sensor Datalogger-----"
 print "Attempting connection with the arduino"
 port = RetrieveARduinoCOMport()
 if not port:
@@ -81,7 +81,7 @@ f = filter.air_filter(port,
 f.air_filter_start()
 
 p = pendrive.pendrive(datalog_path)
-print "attempting to connect to Dropbox server"
+print "Attempting to connect to Dropbox server"
 '''Initialize all the dropbox sessions and return a dictionary'''
 DBSessionObjects = dict()
 for DropboxUser in DBAccessTokenList:
@@ -107,7 +107,7 @@ for DropboxUser in DBSessionObjects:
         print "Connection with "+DropboxUser+" successful"
 
 """From this point the program start"""
-print "Starting logging data"
+print "Starting logging data:"
 
 #The filter waits until a line of data arrives to the serial port and timestamp it
 try:
