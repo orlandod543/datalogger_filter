@@ -54,7 +54,8 @@ def RetrieveARduinoCOMport():
 #the software
 print "-----Dust Sensor Datalogger-----"
 print "Attempting connection with the arduino"
-port = RetrieveARduinoCOMport()
+"""port = RetrieveARduinoCOMport()"""
+port =  "/dev/ttyACM0"
 if not port:
     print "There is no Arduino available"
     sys.exit(1)
