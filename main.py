@@ -31,7 +31,7 @@ def collect_filter_data(f):
     data.insert(0,strtime) #append the time to the data
     return data
 
-def retrieveArduinoCOMport():
+def RetrieveARduinoCOMport():
     """
     Function that query the ports available on the system and picks the one
     where the Arduino is connected.
@@ -52,7 +52,9 @@ def retrieveArduinoCOMport():
 """Configuration section. Define here global variables or settings"""
 #Check if there is an arduino connected. If there is no, it stops
 #the software
-port = retrieveArduinoCOMport()
+print "-----Filter datalogger-----"
+print "Attempting connection with the arduino"
+port = RetrieveARduinoCOMport()
 if not port:
     print "There is no Arduino available"
     sys.exit(1)
@@ -62,37 +64,50 @@ else:
 
 baudrate = 9600
 datalog_path = "data/"
-PD_db_access_token = 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT'
-PD_db_folder = "/mnt/sda1/"
+DBAccessTokenList = {'DBOrlando' : 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT',
+                     'DBPulseDynamics' :'oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D'}
+PD_db_folder = "/Filterdata/"
 dropbox_user_agent = "Filter"
 file_header = "YY-MM-DD-HH:MM:SS Ratio[%] Concentration[pcs/L]\n"
 
 
+
 """Setup section. Define here all the objects to use and configure them."""
 #create and initialize the filter object
-f = filter.air_filter(port, baudrate, timeout=10)
+#Note: Set the timeout to be bigger than sample time. for now is 60 seconds.
+f = filter.air_filter(port,
+                    baudrate,
+                    timeout=60) #Set the timeout to a bigger time than the sample
 f.air_filter_start()
 
 p = pendrive.pendrive(datalog_path)
-print "attempting to connect to Dropbox"
-PD_dropbox = dropbox.Dropbox(PD_db_access_token,
-                            max_retries_on_error = 4,
-                            max_retries_on_rate_limit = 4,
-                            user_agent = dropbox_user_agent,
-                            session = None,
-                            headers = None,
-                            timeout = 30)
-#Try to establish a connection with the dropbox account
-try:
-    PD_dropbox.users_get_current_account()
-except DropboxErrors.AuthError:
-    print "Authentication access token is wrong"
-    pass
-except HTTPRequestsErrors.ConnectionError:
-    print "HTTP error"
-    pass
-"""From this point the program start"""
+print "attempting to connect to Dropbox server"
+'''Initialize all the dropbox sessions and return a dictionary'''
+DBSessionObjects = dict()
+for DropboxUser in DBAccessTokenList:
+    DBSessionObjects[DropboxUser] = dropbox.Dropbox(DBAccessTokenList[DropboxUser],
+                                max_retries_on_error = 4,
+                                max_retries_on_rate_limit = 4,
+                                user_agent = dropbox_user_agent,
+                                session = None,
+                                headers = None,
+                                timeout = 30)
 
+'''Try to establish a connection with the dropbox accounts'''
+for DropboxUser in DBSessionObjects:
+    try:
+        DBSessionObjects[DropboxUser].users_get_current_account()
+    except DropboxErrors.AuthError:
+        print DropboxUser+" Authentication access token is wrong"
+        pass
+    except HTTPRequestsErrors.ConnectionError:
+        print "HTTP error"
+        pass
+    else:
+        print "Connection with "+DropboxUser+" successful"
+
+"""From this point the program start"""
+print "Starting logging data"
 
 #The filter waits until a line of data arrives to the serial port and timestamp it
 try:
@@ -111,13 +126,14 @@ try:
         #Upload data onto dropbox
         file = open(datalog_path+filename,"r")#open file to upload
         contents = file.read()
-        try:
-            PD_dropbox.files_upload(contents,
-                                    PD_db_folder+filename,
-                                    mode = WriteMode('overwrite'))
-        except HTTPRequestsErrors.ConnectionError:
-            print "HTTP error. No data uploaded"
-            pass                       #so it is catched here.
+        for DropboxUser in DBSessionObjects:
+            try:
+                DBSessionObjects[DropboxUser].files_upload(contents,
+                                                PD_db_folder+filename,
+                                                mode = WriteMode('overwrite'))
+            except HTTPRequestsErrors.ConnectionError:
+                print "HTTP error. No data uploaded"
+                pass                       #so it is catched here.
         file.close()
         print data
 
