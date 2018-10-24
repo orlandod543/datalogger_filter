@@ -28,8 +28,9 @@ def RetrieveARduinoCOMport():
     Output: str COM port.
     """
     comports =  serial.tools.list_ports.comports()
-    port_to_use = [comport.device for comport in comports if
-                    "Arduino" in comport.manufacturer]
+    port_to_use = [comport.device for comport in comports 
+		if comport.manufacturer and 
+		"Arduino" in comport.manufacturer]
     if not port_to_use: #If there
         return ""
     else:
