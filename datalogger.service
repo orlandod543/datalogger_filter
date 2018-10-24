@@ -1,0 +1,10 @@
+[Unit]
+Description=Filter datalogger
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python /home/pi/datalogger_filter/main.py > /home/pi/datalogger_filter/datalogger.log
+
+[Install]
+WantedBy=multi-user.target
