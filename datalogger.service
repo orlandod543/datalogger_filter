@@ -3,7 +3,7 @@ Description=Filter datalogger
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python main.py
+ExecStart=/usr/bin/python /home/pi/datalogger_filter/main.py >> /home/pi/datalogger_filter/datalogger.log
 WorkingDirectory=/home/pi/datalogger_filter/
 StandardOutput=inherit
 StandardError=inherit
