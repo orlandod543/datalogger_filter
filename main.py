@@ -37,8 +37,7 @@ file_header = "YY-MM-DD-HH:MM:SS Ratio[%] Concentration[pcs/L]\n"
 #the software
 print "-----Dust Sensor Datalogger-----"
 print "Attempting connection with the arduino"
-#port = DataloggerFunctions.RetrieveARduinoCOMport()
-port = "/dev/ttyACM0"
+port = DataloggerFunctions.RetrieveARduinoCOMport()
 if not port:
     print "There is no Arduino available"
     sys.exit(1)
