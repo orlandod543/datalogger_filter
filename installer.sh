@@ -1,11 +1,11 @@
 #!/bin/bash
 
+version=$1
 REPOSITORY="https://github.com/orlandod543/datalogger_filter/"
 PythonLibraries="pyserial dropbox"
 Packages="python python-pip"
 SYSTEMDFolder="/lib/systemd/system"
 DataloggerRepo="datalogger_filter"
-branch=v0.02
 set -x #echo on
 #install all the dependancies
 echo "Installing git, python and pip"+\n
@@ -22,7 +22,7 @@ cd $DataloggerRepo
 
 #create data folder to store the data
 mkdir data
-git checkout $branch
+git checkout $version
 
 #"I am not sure if I should move the service to /lib/systemd/system/"
 #"Setting the service to startup"
