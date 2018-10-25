@@ -28,7 +28,7 @@ git checkout $version
 #"Setting the service to startup"
 #"Moving the file datalogger.service to systemd folter"
 sudo cp datalogger.service $SYSTEMDFolder
-sudo chmod 644 $SYSTEMDFolder/datalogger.service #making the system executable
+sudo chmod +x $SYSTEMDFolder/datalogger.service #making the system executable
 
 #"Configuring SYSTEMD"
 sudo systemctl daemon-reload
