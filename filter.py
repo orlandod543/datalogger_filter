@@ -5,8 +5,13 @@ __author__ = "Orlando"
 import serial #Pyserial module to control the serial port
 import re
 class air_filter(serial.Serial):
-    def __init__(self, port, baudrate = 9600, stopbits = serial.STOPBITS_ONE,
-    timeout = 2, bytesize = serial.EIGHTBITS):
+    def __init__(   self,
+                    port,
+                    baudrate = 9600,
+                    stopbits = serial.STOPBITS_ONE,
+                    timeout = 2,
+                    bytesize = serial.EIGHTBITS,
+                    datanumber = 1):#Number of data to collect
         """
         Air filter inherits the serial class
         sets all the serial parameters and any nother important configuration on
@@ -18,6 +23,7 @@ class air_filter(serial.Serial):
         self.stopbits = stopbits
         self.timeout = timeout
         self.bytesize = bytesize
+        self.datanumber = datanumber
 
     def air_filter_start(self):
         """
