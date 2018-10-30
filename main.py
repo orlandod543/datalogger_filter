@@ -34,7 +34,7 @@ file_header = "YY-MM-DD-HH:MM:SS Ratio[%] Concentration[pcs/L]\n"
 
 #Dropboxsection
 DBAccessTokenList = {'DBOrlando' : 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT'
-#                    ,'DBPulseDynamics' :'oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D'
+                    ,'DBPulseDynamics' :'oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D'
                      }
 PD_db_folder = "/Filterdata/"
 dropbox_user_agent = "Filter"
@@ -89,7 +89,7 @@ try:
         #Upload data onto dropbox
         filepath = datalog_path+filename
         dbfilepath = PD_db_folder+filename
-        #DataloggerFunctions.UploadFileToDropboxUsers(filepath, dbfilepath, DBSessionObjects)
+        DataloggerFunctions.UploadFileToDropboxUsers(filepath, dbfilepath, DBSessionObjects)
         print data
 
 except KeyboardInterrupt: #Clean the code if the program is keyboard interrupted
