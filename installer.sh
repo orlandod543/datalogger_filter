@@ -3,7 +3,7 @@
 version=$1
 REPOSITORY="https://github.com/orlandod543/datalogger_filter/"
 PythonLibraries="pyserial dropbox"
-Packages="python python-pip"
+Packages="python python-pip pyyaml"
 SYSTEMDFolder="/lib/systemd/system"
 DataloggerRepo="datalogger_filter"
 set -x #echo on
