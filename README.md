@@ -1,9 +1,7 @@
-Software written in python that implements a datalogger for a dust filter.
-Collects the data from a serial port, stores it in a text file and upload them to dropbox.
+Software written in python that implements a datalogger for a sensor communicated through serial port.
 
-It starts automatically in raspberry by means of systemd.
+Collects the data from a serial port, stores it in a text file and uploads it to dropbox.
 
-It uses the modules pyserial and dropbox.
 
 Usage:
 - Connect remotely to the raspberry PI through SSH:
