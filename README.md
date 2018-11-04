@@ -8,10 +8,17 @@ Usage:
 
   ssh pi@[ip adress]
 
-- Copy the master branch of the repository onto the home folder:
+-If the folder does not exists, copy the master branch of the repository to the home folder. 
 
   -> cd ~/
   -> git clone https://github.com/orlandod543/datalogger_filter.git
+ 
+ -Go to the datalogger folder and update it to the latest version:
+  
+  ->cd datalogger_filter
+  -> git pull
+  -> git checkout master
+  
 
 - Make the file installer.sh executable and run it.
 
