@@ -102,7 +102,12 @@ dropbox_user_agent = "Filter"
 
 """From this point the program start"""
 print "Starting logging data:"
-
+#Let's upload the configuration file onto dropbox
+if DropboxEnable:
+    DBFilePath= "/"+Datalogger.Alias+"/"
+    DataloggerFunctions.UploadFileToDropboxUsers("Conf.yaml",
+                                                DBFilePath,
+                                                DBSessionObjects)
 #The filter waits until a line of data arrives to the serial port and timestamp it
 try:
     while True:
