@@ -104,7 +104,8 @@ dropbox_user_agent = "Filter"
 print "Starting logging data:"
 #Let's upload the configuration file onto dropbox
 if DropboxEnable:
-    DBFilePath= "/"+Datalogger.Alias+"Conf.yaml"
+    DBFilePath= "/"+Datalogger.Alias+"/"+"Conf.yaml"
+    print "Uploading configuration file to %s",(DBFilePath)
     DataloggerFunctions.UploadFileToDropboxUsers("Conf.yaml",
                                                 DBFilePath,
                                                 DBSessionObjects)
