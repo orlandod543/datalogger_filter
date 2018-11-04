@@ -4,6 +4,8 @@ __author__ = "Orlando"
 
 import serial #Pyserial module to control the serial port
 import re
+import DataloggerFunctions
+
 class air_filter(serial.Serial):
     def __init__(   self,
                     port,
@@ -11,7 +13,8 @@ class air_filter(serial.Serial):
                     stopbits = serial.STOPBITS_ONE,
                     timeout = 2,
                     bytesize = serial.EIGHTBITS,
-                    datanumber = 1):#Number of data to collect
+                    datanumber = 1,#Number of data to collect
+                    datanamestr = ""):
         """
         Air filter inherits the serial class
         sets all the serial parameters and any nother important configuration on
@@ -24,6 +27,7 @@ class air_filter(serial.Serial):
         self.timeout = timeout
         self.bytesize = bytesize
         self.datanumber = datanumber
+        self.datanamestr = datanamestr
 
     def air_filter_start(self):
         """
@@ -31,6 +35,16 @@ class air_filter(serial.Serial):
         Input: None
         Outuput bool
         """
+        #check if the comport is configured. If not tries to find and arduino
+        if not self.port:
+            print "Port not configure"
+            print "Attempting connection with the arduino"
+            self.port = DataloggerFunctions.RetrieveARduinoCOMport()
+            if not self.port:
+                print "There is no Arduino available"
+                sys.exit(1)
+            else:
+                print "Found Arduino on port"+ str(self.port)
         self.open()
         self.reset_input_buffer()
         return self.is_open
