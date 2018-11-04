@@ -87,13 +87,14 @@ for Dataloggerobj  in DLinfo:
 
 """Dropbox Initialization"""
 #Create a dictionary with a list of users to pass to InitializeDropboxUsers"""
-DBAccessTokendict = {}
-for DBuser in DBUserList:
-    DBAccessTokendict[DBuser] = DBUserList[DBuser]["AccessToken"]
-dbfilepath = DBUserList[DBuser]["Folder"]
-#Initialize all the dropbox sessions and return a dictionary
-print "Attempting to connect to Dropbox server"
-DBSessionObjects = DataloggerFunctions.InitializeDropboxUsers(DBAccessTokendict)
+if DropboxEnable:
+    DBAccessTokendict = {}
+    for DBuser in DBUserList:
+        DBAccessTokendict[DBuser] = DBUserList[DBuser]["AccessToken"]
+    DBFolder = DBUserList[DBuser]["Folder"]
+    #Initialize all the dropbox sessions and return a dictionary
+    print "Attempting to connect to Dropbox server"
+    DBSessionObjects = DataloggerFunctions.InitializeDropboxUsers(DBAccessTokendict)
 #Dropboxsection
 PD_db_folder = "/Filterdata/"
 dropbox_user_agent = "Filter"
@@ -107,21 +108,18 @@ try:
     while True:
         #get and timestamp the data
         data = Datalogger.CollectData()
-        print data
-        filename = data[0][:8]+'.txt' #set the name of the file by the data
-
-        #For new files, the file header is writen at the beginning.
-        #then the data is appended onto the file
-        if not p.file_exists(filename):
-            print "Creating file " + str(filename)
-            p.create_file_header(filename,file_header)
-        p.write_append(filename,' '.join(map(str,data))+"\n")
 
         #Upload data onto dropbox
-        filepath = datalog_path+filename
-#        DataloggerFunctions.UploadFileToDropboxUsers(filepath, dbfilepath, DBSessionObjects)
-        print data
-
+        if DropboxEnable:
+            filename = data[0]
+            FilePathToUpload = Datalogger.FolderPath+filename
+            DBFilePath= "/"+Datalogger.Alias+"/"+DBFolder+filename
+            print "Uploading %s to Dropbox file %s"%(FilePathToUpload,DBFilePath)
+            DataloggerFunctions.UploadFileToDropboxUsers(FilePathToUpload,
+                                                        DBFilePath,
+                                                        DBSessionObjects)
+        else:
+            print "Dropbox disabled. File stored locally"
 except KeyboardInterrupt: #Clean the code if the program is keyboard interrupted
     #print f.filter_close()
     sys.exit(0)

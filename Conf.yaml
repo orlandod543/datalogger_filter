@@ -1,0 +1,31 @@
+###############################
+#Datalogger configuration file#
+###############################
+
+DataloggerInfo:
+  Room71: #The alias of the Datalogger
+    DatalogPath: "data/"
+    AverageFilter : true
+    AverageTimeWindow : 60
+#######################
+#Dropbox Configuration#
+#######################
+DBUserList:
+  DBOrlando:
+    AccessToken: "QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT"
+    Folder: "Filterdata/"
+#  DBPulseDynamics:
+#    AccessToken: "oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D"
+#    Folder: "Filterdata/"
+######################
+#Sensor configuration#
+######################
+Sensors:
+  DustSensor:
+    Type: "Serial"
+    Port: ""
+    Baudrate: 9600
+    Timeout: 60 #Set the timeout to a bigger number than the sampling time
+    DataStruct: "%f %f"
+    DatasetSize: 2
+    Dataname : "Ratio[%] Concentration[pcs/L]"

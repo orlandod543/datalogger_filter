@@ -61,12 +61,22 @@ class datalogger:
         return FltData
 
     def CollectData(self):
+        """
+        Method that collects data from sensors and save them into a file_exists
+        Input : None
+        Output: [str file saved, str time, float data1, float data2]
+        """
         if self.AverageFilter:
             print "Collecting filtered data"
-            return self.CollectFilteredData()
+            data =  self.CollectFilteredData()
         else:
             print "Collecting normal data"
-            return self.CollectSensorData()
+            data = self.CollectSensorData()
+        print data
+        filename = data[0][:8]+'.txt' #set the name of the file by the data
+        self.AppendData2File(data, filename,self.SensorList.datanamestr)
+        data.insert(0,filename)
+        return data
 
     def CloseDatalogger(self):
         """
@@ -74,3 +84,16 @@ class datalogger:
         input: None
         Output: None
         """
+
+    def AppendData2File(self,data, filename, file_header):
+        """
+        Writes the data collected to the file
+        Input: list data (str time, float data1, float data2)
+                str filename. Name of the file to write
+                str file_header header to add on the top
+        Output: None
+        """
+        if not self.FileHandler.file_exists(filename):
+            print "Creating file " + str(filename)
+            self.FileHandler.create_file_header(filename,file_header+"\n")
+        self.FileHandler.write_append(filename,' '.join(map(str,data))+"\n")

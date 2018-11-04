@@ -37,7 +37,7 @@ class air_filter(serial.Serial):
         """
         #check if the comport is configured. If not tries to find and arduino
         if not self.port:
-            print "Port not configure"
+            print "Port not configured"
             print "Attempting connection with the arduino"
             self.port = DataloggerFunctions.RetrieveARduinoCOMport()
             if not self.port:
