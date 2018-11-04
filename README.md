@@ -6,12 +6,12 @@ Collects the data from a serial port, stores it in a text file and uploads it to
 Usage:
 - Connect remotely to the raspberry PI through SSH:
 
-      ->ssh pi@[ip adress]
+            ssh pi@[ip adress]
 
 -If the folder does not exists, copy the master branch of the repository to the home folder. 
 
-      -> cd ~/
-      -> git clone https://github.com/orlandod543/datalogger_filter.git
+      cd ~/
+      git clone https://github.com/orlandod543/datalogger_filter.git
  
  -Go to the datalogger folder and update it to the latest version:
   
