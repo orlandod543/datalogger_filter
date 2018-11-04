@@ -10,7 +10,8 @@ import filter
 
 import sys, traceback
 import pendrive
-
+import yaml
+import Datalogger
 import os
 import exceptions
 from dropbox.files import WriteMode
@@ -18,56 +19,85 @@ import dropbox.exceptions as DropboxErrors
 import requests.exceptions as HTTPRequestsErrors
 import DataloggerFunctions
 
-"""function section"""
-#Write all functions to DataloggerFunctions
 
+"""Read the yaml configuration file"""
+try:
+     with open("Conf.yaml",'r') as ConfFile:
+        try:
+            Configuration= yaml.safe_load(ConfFile)
+        except yaml.YAMLError as exc:
+            print(exc)
+            sys.exit(1)
+except IOError as Err:
+    print(Err)
+    print "Please check your configuration file"
+    sys.exit(1)
+    """Load the configuration variables"""
 
-"""Configuration section. Define here global variables or settings"""
-#sensor section
-Sensortimeout = 60 #time window in seconds to wait for new data
-Sensordatasesize = 2#size of the dataset data the sensor delivers
-Sensorbaudrate = 9600
-#File section
-datalog_path = "data/"
-file_header = "YY-MM-DD-HH:MM:SS Ratio[%] Concentration[pcs/L]\n"
+#Configuration section. Define here global variables or settings"""
+DropboxEnable = True
 
+DLinfo = Configuration["DataloggerInfo"]    #Datalogger to create
+         #Sensors to load
+try:
+    SensorList = Configuration["Sensors"]
+except KeyError:
+    print "There are not sensors available"
+    sys.exit(1)
+else:
+    if not SensorList:
+        print "There are not sensors available"
+        sys.exit(1)
+    else:
+        print "Found %d sensors" % len(SensorList)
+ #Dropbox configuration to load
+ #Dropbox configuration
+    #Dropbox to configure
+try:
+    DBUserList = Configuration["DBUserList"]    #dropbox users to attend
+except KeyError:
+    DropboxEnable = False
+    print "Key not found, Dropbox upload Disabled"
+else:
+    if not DBUserList:
+        DropboxEnable = False
+        print "No Dropbox users found, upload disabled"
+    else:
+        print "Found %d Dropbox users, upload Enabled" % len(DBUserList)
 
+"""Sensor Creation"""
+for Sensor in SensorList:
+    SnsobjList = filter.air_filter(port = SensorList[Sensor]["Port"],
+                                    baudrate = SensorList[Sensor]["Baudrate"],
+                                    timeout=SensorList[Sensor]["Timeout"],
+                                    datanumber = SensorList[Sensor]["DatasetSize"],
+                                    datanamestr = SensorList[Sensor]["Dataname"])
+    SnsobjList.air_filter_start()
+
+"""Datalogger creation"""
+for Dataloggerobj  in DLinfo:
+    DatalogPath =  DLinfo[Dataloggerobj]["DatalogPath"]
+    Averagefilter = DLinfo[Dataloggerobj]["AverageFilter"]
+    AverageTimewindow = DLinfo[Dataloggerobj]["AverageTimeWindow"]
+    Datalogger = Datalogger.datalogger(Alias=Dataloggerobj ,
+                                        SensorList = SnsobjList,
+                                        FolderPath=DatalogPath,
+                                        AverageFilter = Averagefilter,
+                                        AverageTimewindow =AverageTimewindow)
+
+"""Dropbox Initialization"""
+#Create a dictionary with a list of users to pass to InitializeDropboxUsers"""
+DBAccessTokendict = {}
+for DBuser in DBUserList:
+    DBAccessTokendict[DBuser] = DBUserList[DBuser]["AccessToken"]
+dbfilepath = DBUserList[DBuser]["Folder"]
+#Initialize all the dropbox sessions and return a dictionary
+print "Attempting to connect to Dropbox server"
+DBSessionObjects = DataloggerFunctions.InitializeDropboxUsers(DBAccessTokendict)
 #Dropboxsection
-DBAccessTokenList = {'DBOrlando' : 'QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT'
-                    ,'DBPulseDynamics' :'oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D'
-                     }
 PD_db_folder = "/Filterdata/"
 dropbox_user_agent = "Filter"
 
-#Datalogger section
-TimeWindow = 60#the time window to filter the data in seconds
-
-"""Setup section. Define here all the objects to use and configure them."""
-#Check if there is an arduino connected. If there is no, it stops
-#the software
-print "-----Dust Sensor Datalogger-----"
-print "Attempting connection with the arduino"
-SensorPort = DataloggerFunctions.RetrieveARduinoCOMport()
-if not SensorPort:
-    print "There is no Arduino available"
-    sys.exit(1)
-else:
-    print "Found Arduino on port"+ str(SensorPort)
-
-#create and initialize the filter object
-#Note: Set the timeout to be bigger than sample time. for now is 60 seconds.
-f = filter.air_filter(SensorPort,
-                    Sensorbaudrate,
-                    timeout=Sensortimeout,#Set the timeout to a bigger time than the sample
-                    datanumber = Sensordatasesize)
-f.air_filter_start()
-
-#initialize the pendrive
-p = pendrive.pendrive(datalog_path)
-
-print "Attempting to connect to Dropbox server"
-'''Initialize all the dropbox sessions and return a dictionary'''
-DBSessionObjects = DataloggerFunctions.InitializeDropboxUsers(DBAccessTokenList)
 
 """From this point the program start"""
 print "Starting logging data:"
@@ -76,7 +106,8 @@ print "Starting logging data:"
 try:
     while True:
         #get and timestamp the data
-        data = DataloggerFunctions.CollectFilteredData(f,TimeWindow) #collect filtered datalogger data
+        data = Datalogger.CollectData()
+        print data
         filename = data[0][:8]+'.txt' #set the name of the file by the data
 
         #For new files, the file header is writen at the beginning.
@@ -88,10 +119,9 @@ try:
 
         #Upload data onto dropbox
         filepath = datalog_path+filename
-        dbfilepath = PD_db_folder+filename
-        DataloggerFunctions.UploadFileToDropboxUsers(filepath, dbfilepath, DBSessionObjects)
+#        DataloggerFunctions.UploadFileToDropboxUsers(filepath, dbfilepath, DBSessionObjects)
         print data
 
 except KeyboardInterrupt: #Clean the code if the program is keyboard interrupted
-    print f.filter_close()
+    #print f.filter_close()
     sys.exit(0)
