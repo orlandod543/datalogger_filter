@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=$1
+version=${1:-"master"}
 REPOSITORY="https://github.com/orlandod543/datalogger_filter.git"
 PythonLibraries="pyserial dropbox pyyaml"
 Packages="python python-pip"
@@ -15,6 +15,7 @@ pip install $PythonLibraries
 
 #create data folder to store the data
 mkdir data
+git pull
 git checkout $version
 
 #"I am not sure if I should move the service to /lib/systemd/system/"
