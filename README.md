@@ -10,27 +10,27 @@ Usage:
 
 -If the folder does not exists, copy the master branch of the repository to the home folder. 
 
-  -> cd ~/
-  -> git clone https://github.com/orlandod543/datalogger_filter.git
+      -> cd ~/
+      -> git clone https://github.com/orlandod543/datalogger_filter.git
  
  -Go to the datalogger folder and update it to the latest version:
   
-  ->cd datalogger_filter
-  -> git pull
-  -> git checkout master
+      ->cd datalogger_filter
+      -> git pull
+      -> git checkout master
   
 
 - Make the file installer.sh executable and run it.
 
-  -> sudo chmod +x installer.sh
+      -> sudo chmod +x installer.sh
   
 - Install the system:
 
-  -> ./installer.sh
+      -> ./installer.sh
   
 - Reboot
 
-  sudo reboot
+      sudo reboot
 
 Configure:
 
@@ -38,7 +38,7 @@ The datalogger uses a YAML configuration file.
 To change the default settings:
   - Download the parameters stored onto the datalogger;
 
-    ->scp pi@[ip adress]:datalogger_filter/conf.yaml [/your/local/folder]/conf.yaml
+        ->scp pi@[ip adress]:datalogger_filter/conf.yaml [/your/local/folder]/conf.yaml
 
   - Open the file with a text editor.
   
