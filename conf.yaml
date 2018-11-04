@@ -3,14 +3,17 @@
 ###############################
 
 DataloggerInfo:
-  datalogger1: #The alias of the Datalogger without spaces or special characters
+  datalogger1: #The alias of the Datalogger without spaces
     DatalogPath: "data/"
     AverageFilter : true
-    AverageTimeWindow : 60 #averaging window in seconds. 
+    AverageTimeWindow : 120 #the averaging time window in seconds
 #######################
 #Dropbox Configuration#
 #######################
 DBUserList:
+  DBOrlando:
+    AccessToken: "QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT"
+    Folder: "Filterdata/"
   DBPulseDynamics:
     AccessToken: "oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D"
     Folder: "Filterdata/"
