@@ -6,7 +6,7 @@ DataloggerInfo:
   datalogger1: #The alias of the Datalogger without spaces
     DatalogPath: "data/"
     AverageFilter : true
-    AverageTimeWindow : 120 #the averaging time window in seconds
+    AverageTimeWindow : 20 #the averaging time window in seconds
 #######################
 #Dropbox Configuration#
 #######################

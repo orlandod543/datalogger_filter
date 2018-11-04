@@ -107,7 +107,7 @@ print "Starting logging data:"
 #Let's upload the configuration file onto dropbox
 if DropboxEnable:
     DBFilePath= "/"+Datalogger.Alias+"/"+"conf.yaml"
-    print "Uploading configuration file to %s",(DBFilePath)
+    print "Uploading configuration file to %s" %(DBFilePath)
     DataloggerFunctions.UploadFileToDropboxUsers("conf.yaml",
                                                 DBFilePath,
                                                 DBSessionObjects)
@@ -122,7 +122,7 @@ try:
             filename = data[0]
             FilePathToUpload = Datalogger.FolderPath+filename
             DBFilePath= "/"+Datalogger.Alias+"/"+DBFolder+filename
-            print "Uploading %s to Dropbox file %s" (FilePathToUpload,DBFilePath)
+            print "Uploading %s to Dropbox file %s" %(FilePathToUpload,DBFilePath)
             DataloggerFunctions.UploadFileToDropboxUsers(FilePathToUpload,
                                                         DBFilePath,
                                                         DBSessionObjects)
