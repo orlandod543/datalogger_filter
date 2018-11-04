@@ -3,10 +3,10 @@
 ###############################
 
 DataloggerInfo:
-  Orlando_house: #The alias of the Datalogger
+  datalogger1: #The alias of the Datalogger without spaces or special characters
     DatalogPath: "data/"
     AverageFilter : true
-    AverageTimeWindow : 120
+    AverageTimeWindow : 60 #averaging window in seconds. 
 #######################
 #Dropbox Configuration#
 #######################
