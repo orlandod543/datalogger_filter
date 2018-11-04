@@ -6,7 +6,7 @@ Collects the data from a serial port, stores it in a text file and uploads it to
 Usage:
 - Connect remotely to the raspberry PI through SSH:
 
-  ssh pi@[ip adress]
+      ->ssh pi@[ip adress]
 
 -If the folder does not exists, copy the master branch of the repository to the home folder. 
 
