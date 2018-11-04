@@ -97,3 +97,9 @@ class datalogger:
             print "Creating file " + str(filename)
             self.FileHandler.create_file_header(filename,file_header+"\n")
         self.FileHandler.write_append(filename,' '.join(map(str,data))+"\n")
+
+    def SensorClose(self):
+        """
+        Closes the COM port
+        """
+        return self.SensorList.filter_close()

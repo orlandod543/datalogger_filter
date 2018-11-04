@@ -121,5 +121,5 @@ try:
         else:
             print "Dropbox disabled. File stored locally"
 except KeyboardInterrupt: #Clean the code if the program is keyboard interrupted
-    #print f.filter_close()
+    print Datalogger.SensorClose()
     sys.exit(0)
