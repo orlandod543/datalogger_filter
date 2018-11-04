@@ -22,7 +22,7 @@ import DataloggerFunctions
 
 """Read the yaml configuration file"""
 try:
-     with open("Conf.yaml",'r') as ConfFile:
+     with open("conf.yaml",'r') as ConfFile:
         try:
             Configuration= yaml.safe_load(ConfFile)
         except yaml.YAMLError as exc:
@@ -32,10 +32,11 @@ except IOError as Err:
     print(Err)
     print "Please check your configuration file"
     sys.exit(1)
-    """Load the configuration variables"""
+
+"""Load the configuration variables"""
 
 #Configuration section. Define here global variables or settings"""
-DropboxEnable = True
+DropboxEnable = False #by default the dropbox is disconnected
 
 DLinfo = Configuration["DataloggerInfo"]    #Datalogger to create
          #Sensors to load
@@ -63,6 +64,7 @@ else:
         DropboxEnable = False
         print "No Dropbox users found, upload disabled"
     else:
+        DropboxEnable = True
         print "Found %d Dropbox users, upload Enabled" % len(DBUserList)
 
 """Sensor Creation"""
@@ -104,9 +106,9 @@ dropbox_user_agent = "Filter"
 print "Starting logging data:"
 #Let's upload the configuration file onto dropbox
 if DropboxEnable:
-    DBFilePath= "/"+Datalogger.Alias+"/"+"Conf.yaml"
+    DBFilePath= "/"+Datalogger.Alias+"/"+"conf.yaml"
     print "Uploading configuration file to %s",(DBFilePath)
-    DataloggerFunctions.UploadFileToDropboxUsers("Conf.yaml",
+    DataloggerFunctions.UploadFileToDropboxUsers("conf.yaml",
                                                 DBFilePath,
                                                 DBSessionObjects)
 #The filter waits until a line of data arrives to the serial port and timestamp it
@@ -120,7 +122,7 @@ try:
             filename = data[0]
             FilePathToUpload = Datalogger.FolderPath+filename
             DBFilePath= "/"+Datalogger.Alias+"/"+DBFolder+filename
-            print "Uploading %s to Dropbox file %s"%(FilePathToUpload,DBFilePath)
+            print "Uploading %s to Dropbox file %s" (FilePathToUpload,DBFilePath)
             DataloggerFunctions.UploadFileToDropboxUsers(FilePathToUpload,
                                                         DBFilePath,
                                                         DBSessionObjects)

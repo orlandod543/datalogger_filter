@@ -3,20 +3,17 @@
 ###############################
 
 DataloggerInfo:
-  Room71: #The alias of the Datalogger
+  Orlando_house: #The alias of the Datalogger
     DatalogPath: "data/"
     AverageFilter : true
-    AverageTimeWindow : 60
+    AverageTimeWindow : 120
 #######################
 #Dropbox Configuration#
 #######################
 DBUserList:
-  DBOrlando:
-    AccessToken: "QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT"
+  DBPulseDynamics:
+    AccessToken: "oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D"
     Folder: "Filterdata/"
-#  DBPulseDynamics:
-#    AccessToken: "oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D"
-#    Folder: "Filterdata/"
 ######################
 #Sensor configuration#
 ######################
