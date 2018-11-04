@@ -33,11 +33,14 @@ The datalogger uses a YAML configuration file.
 To change the default settings:
   - Download the parameters stored onto the datalogger;
 
-    ->scp pi@[ip adress]:datalogger_filter/conf.yaml /your/folder/conf.yaml
+    ->scp pi@[ip adress]:datalogger_filter/conf.yaml [/your/local/folder]/conf.yaml
 
   - Open the file with a text editor.
+  
   - The parameter right below DataloggerInfo is the alias of the datalogger. Modify this name according to your needs.
+  
   -Save the file
+  
   -Upload the file to the raspberry PI:
 
-    -> scp /your/folder/conf.yaml pi@[ip adress]:datalogger_filter/conf.yaml
+    -> scp [/your/local/folder]/conf.yaml pi@[ip adress]:datalogger_filter/conf.yaml
