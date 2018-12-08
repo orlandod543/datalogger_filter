@@ -14,9 +14,9 @@ DBUserList:
   DBOrlando:
     AccessToken: "QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT"
     Folder: "Filterdata/"
-  DBPulseDynamics:
-    AccessToken: "oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D"
-    Folder: "Filterdata/"
+#  DBPulseDynamics:
+#    AccessToken: "oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D"
+#    Folder: "Filterdata/"
 ######################
 #Sensor configuration#
 ######################
@@ -26,6 +26,6 @@ Sensors:
     Port: ""
     Baudrate: 9600
     Timeout: 60 #Set the timeout to a bigger number than the sampling time
-    DataStruct: "%f %f"
-    DatasetSize: 2
-    Dataname : "Ratio[%] Concentration[pcs/L]"
+    DataStruct: "%f %f %f %f %f"
+    DatasetSize: 5
+    Dataname : "Ratio[%] Concentration[pcs/L] CO2[ppm] TVOC[ppb] Temp[°C]"

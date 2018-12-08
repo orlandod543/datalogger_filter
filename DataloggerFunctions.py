@@ -102,8 +102,10 @@ def CollectFilteredData(f,
     Samplenr = 0 #number of sampled data received in the window
     StartTime = time() #get the starting point of the timewindow
     #start gathering the data
+    print 'estoy aqui'
     while((time()- StartTime)<TimeWindow): #while time elapsed is below the timewindow
         accdata = f.get_data() #get the sensor data. Expected to return a list of size f.datanumber
+        print accdata
         #Check whether the list exists and has the correct lenght
         if accdata and len(accdata) == f.datanumber:
             print accdata

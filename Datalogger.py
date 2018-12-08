@@ -49,7 +49,6 @@ class datalogger:
             accdata = self.SensorList.get_data() #get the sensor data. Expected to return a list of size f.datanumber
             #Check whether the list exists and has the correct lenght
             if accdata and len(accdata) == self.SensorList.datanumber:
-                print accdata
                 for i in range(len(accdata)):
                     FltData[i] = FltData[i] + accdata[i]
                 Samplenr += 1

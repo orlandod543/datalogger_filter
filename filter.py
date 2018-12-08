@@ -51,22 +51,22 @@ class air_filter(serial.Serial):
 
     def get_data(self):
         """
-        reads a line of data, then extract the two variables and return a list
-        with the two variables
+        reads a line of data, then split the line according to a " " and returns
+        a list with all the variables it found.
         returns 0.0 0.0 if there is an error.
         Input: None
-        Output:[Value1, Value2]
+        Output: list data
         """
+        RegEx = '\s+' #set to split the line by whitespace
         line = self.readline() #read one line of data
-        m = re.match(r'(.*)          (.*)', line) #extract data according to the pattern
-        try:
-            ratio = float(m.group(1))
-            concentration = float(m.group(2))
-        except(AttributeError,ValueError):
-            ratio = 0.0
-            concentration = 0.0
-
-        return [ratio, concentration]
+        line = line.rstrip() #remove EOL character from the string
+        data = re.split(RegEx, line) #split data according to the pattern
+        for i in range(len(data)):
+            try:
+                data[i] = float(data[i])
+            except(AttributeError,ValueError):
+                data[i] = 0.0
+        return data
 
 
     def get_timeout(self):
