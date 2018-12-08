@@ -28,4 +28,4 @@ Sensors:
     Timeout: 60 #Set the timeout to a bigger number than the sampling time
     DataStruct: "%f %f %f %f %f"
     DatasetSize: 5
-    Dataname : "Ratio[%] Concentration[pcs/L] CO2[ppm] TVOC[ppb] Temp[°C]"
+    Dataname : "Ratio[%] Concentration[pcs/L] CO2[ppm] TVOC[ppb] Temp[Celsius]"
