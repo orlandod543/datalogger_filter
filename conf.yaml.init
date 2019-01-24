@@ -14,9 +14,9 @@ DBUserList:
   DBOrlando:
     AccessToken: "QL-hU5_KShUAAAAAAAALMCIFlNcHRN-GQQOA3PvGtaShc_EPlakjUhyJD026tmLT"
     Folder: "Filterdata/"
-  DBPulseDynamics:
-    AccessToken: "oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D"
-    Folder: "Filterdata/"
+#  DBPulseDynamics:
+#    AccessToken: "oEgHuggfnPAAAAAAAAACOOkjlzybdPgSd8ZPWHkxqUA9d-bnthhTaY_BSJiZoX5D"
+#    Folder: "Filterdata/"
 ######################
 #Sensor configuration#
 ######################
