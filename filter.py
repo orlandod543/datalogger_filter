@@ -5,6 +5,7 @@ __author__ = "Orlando"
 import serial #Pyserial module to control the serial port
 import re
 import DataloggerFunctions
+import pendrive #to be removed later
 
 class air_filter(serial.Serial):
     def __init__(   self,
@@ -28,6 +29,7 @@ class air_filter(serial.Serial):
         self.bytesize = bytesize
         self.datanumber = datanumber
         self.datanamestr = datanamestr
+        self.FileHandler = pendrive.pendrive("") #to be removed later
 
     def air_filter_start(self):
         """
@@ -59,6 +61,8 @@ class air_filter(serial.Serial):
         """
         RegEx = '\s+' #set to split the line by whitespace
         line = self.readline() #read one line of data
+        self.FileHandler.write_append("rawdata",line) #to be remove later
+        print line
         line = line.rstrip() #remove EOL character from the string
         data = re.split(RegEx, line) #split data according to the pattern
         for i in range(len(data)):
